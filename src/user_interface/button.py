@@ -15,21 +15,8 @@ class Button:
 					height
 				)
 
-		buttonTextFont = self.pygame.font.Font('freesansbold.ttf', 28)
 
-		test = centeredtext(text, top, left, width, height, self.pygame, textcolor)
-		test.draw(self.area)
+		self.area.fill(bgcolor, box)
 
-		pvcButtonRect = self.area.blit(
-			buttonTextFont.render(
-				text, 
-				True, 
-				textcolor
-			), 
-			self.area.fill(
-				bgcolor, 
-				box
-			)
-		)
-
-		self.pygame.draw.rect(self.area, bordercolor, box, 1)
+		test = centeredtext(text, left, top, width, height, self.pygame, textcolor)
+		test.draw(self.area, bordercolor)
