@@ -56,62 +56,67 @@ class GameUI:
 
 
         self.displayMainMenu()
+    
+    def checkButtonClick(self, pos):
+        for button in self.visiblebuttons: 
+            print("button")
 
     def tic(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN: self.checkButtonClick(pygame.mouse.get_pos())
         pygame.display.flip()
 
     def displayMainMenu(self):
         buttonHalfWidth = 200
         buttonHeight = 50
 
-
-        self.buttonMaker.create(
-            self.color_menu,
-            self.color_darktext,
-            self.color_border,
-            self.WINDOW_SIZE[0]/2-buttonHalfWidth, 
-            50, 
-            buttonHalfWidth*2, 
-            buttonHeight, 
-            "Player vs Computer", 
-            True
-        ) 
-        self.buttonMaker.create(
-            self.color_menu,
-            self.color_darktext,
-            self.color_border,
-            self.WINDOW_SIZE[0]/2-buttonHalfWidth, 
-            110, 
-            buttonHalfWidth*2, 
-            buttonHeight, 
-            "Player vs Player", 
-            True
-        )         
-        self.buttonMaker.create(
-            self.color_menu,
-            self.color_darktext,
-            self.color_border,
-            self.WINDOW_SIZE[0]/2-buttonHalfWidth, 
-            170, 
-            buttonHalfWidth*2, 
-            buttonHeight, 
-            "Player Tournament", 
-            True
-        ) 
-        self.buttonMaker.create(
-            self.color_menu,
-            self.color_darktext,
-            self.color_border,
-            self.WINDOW_SIZE[0]/2-buttonHalfWidth, 
-            400, 
-            buttonHalfWidth*2, 
-            buttonHeight, 
-            "Exit", 
-            True
-        )      
-
+        self.visiblebuttons = (
+            self.buttonMaker.create(
+                self.color_menu,
+                self.color_darktext,
+                self.color_border,
+                self.WINDOW_SIZE[0]/2-buttonHalfWidth, 
+                50, 
+                buttonHalfWidth*2, 
+                buttonHeight, 
+                "Player vs Computer", 
+                True
+            ), 
+            self.buttonMaker.create(
+                self.color_menu,
+                self.color_darktext,
+                self.color_border,
+                self.WINDOW_SIZE[0]/2-buttonHalfWidth, 
+                110, 
+                buttonHalfWidth*2, 
+                buttonHeight, 
+                "Player vs Player", 
+                True
+            ),         
+            self.buttonMaker.create(
+                self.color_menu,
+                self.color_darktext,
+                self.color_border,
+                self.WINDOW_SIZE[0]/2-buttonHalfWidth, 
+                170, 
+                buttonHalfWidth*2, 
+                buttonHeight, 
+                "Player Tournament", 
+                True
+            ), 
+            self.buttonMaker.create(
+                self.color_menu,
+                self.color_darktext,
+                self.color_border,
+                self.WINDOW_SIZE[0]/2-buttonHalfWidth, 
+                400, 
+                buttonHalfWidth*2, 
+                buttonHeight, 
+                "Exit", 
+                True
+            )      
+        )
         
 
 
