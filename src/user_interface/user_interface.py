@@ -72,7 +72,40 @@ class GameUI:
             self.color_darktext,
             self.color_border,
             self.WINDOW_SIZE[0]/2-buttonHalfWidth, 
+            50, 
+            buttonHalfWidth*2, 
             buttonHeight, 
+            "Player vs Computer", 
+            True
+        ) 
+        self.buttonMaker.create(
+            self.color_menu,
+            self.color_darktext,
+            self.color_border,
+            self.WINDOW_SIZE[0]/2-buttonHalfWidth, 
+            110, 
+            buttonHalfWidth*2, 
+            buttonHeight, 
+            "Player vs Player", 
+            True
+        )         
+        self.buttonMaker.create(
+            self.color_menu,
+            self.color_darktext,
+            self.color_border,
+            self.WINDOW_SIZE[0]/2-buttonHalfWidth, 
+            170, 
+            buttonHalfWidth*2, 
+            buttonHeight, 
+            "Player Tournament", 
+            True
+        ) 
+        self.buttonMaker.create(
+            self.color_menu,
+            self.color_darktext,
+            self.color_border,
+            self.WINDOW_SIZE[0]/2-buttonHalfWidth, 
+            400, 
             buttonHalfWidth*2, 
             buttonHeight, 
             "Exit", 
