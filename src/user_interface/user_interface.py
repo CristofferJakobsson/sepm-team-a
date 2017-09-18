@@ -1,5 +1,6 @@
 import datetime, random, pygame, sys, time
 from button import Button
+from centeredtext import centeredtext
 
 
 class GameUI: 
@@ -30,7 +31,7 @@ class GameUI:
                 )
             )
         )
-        
+
         self.secondaryArea = self.screen.subsurface(
             self.screen.fill(
                 self.color_menu, 
@@ -43,6 +44,10 @@ class GameUI:
             )
         )
         
+
+        title = centeredtext("Tic Tac Toe", 0,0, 1280, 75, pygame, 100, self.color_lighttext)
+        title.draw(self.secondaryArea, self.color_menu)
+
         self.border   = pygame.draw.line(
             self.screen, 
             self.color_border, 

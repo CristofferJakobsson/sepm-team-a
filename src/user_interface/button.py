@@ -18,5 +18,5 @@ class Button:
 
 		self.area.fill(bgcolor, box)
 
-		test = centeredtext(text, left, top, width, height, self.pygame, textcolor)
+		test = centeredtext(text, left, top, width, height, self.pygame, 28, textcolor)
 		test.draw(self.area, bordercolor)

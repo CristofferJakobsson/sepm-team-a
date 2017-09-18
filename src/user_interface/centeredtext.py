@@ -1,10 +1,10 @@
 class centeredtext(object):
 
-    def __init__(self, text, x,y,w,h, pygame,color=(0,0,0)):
+    def __init__(self, text, x,y,w,h, pygame, fontsize, color=(0,0,0)):
         self.pygame = pygame
         self.x, self.y, self.w, self.h = x,y,w,h
         self.pygame.font.init()
-        font = self.pygame.font.SysFont("sans", 28)
+        font = self.pygame.font.SysFont("sans", fontsize)
         width, height = font.size(text)
         xoffset = (self.w-width) // 2
         yoffset = (self.h-height) // 2
