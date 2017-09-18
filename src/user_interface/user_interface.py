@@ -2,6 +2,9 @@ import datetime, random, pygame, sys, time
 from button import Button
 from centeredtext import centeredtext
 
+def actionPrint(message):
+    print(message)
+
 
 class GameUI: 
     def __init__(self): 
@@ -57,27 +60,26 @@ class GameUI:
             2
         )
         
-        self.buttonMaker = Button(pygame, self.mainArea)
-
-
-        self.displayMainMenu()
+        self.displayMainMenu(pygame)
     
     def checkButtonClick(self, pos):
         for button in self.visiblebuttons: 
-            print("button")
+            offset = button.area.get_offset()
+            if (button.box.collidepoint((pos[0]-offset[0]), (pos[1]-offset[1]))): button.action(button.text)
 
     def tic(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN: self.checkButtonClick(pygame.mouse.get_pos())
+            
         pygame.display.flip()
 
-    def displayMainMenu(self):
+    def displayMainMenu(self, pygame):
         buttonHalfWidth = 200
         buttonHeight = 50
 
         self.visiblebuttons = (
-            self.buttonMaker.create(
+            (Button(pygame, self.mainArea).create(
                 self.color_menu,
                 self.color_darktext,
                 self.color_border,
@@ -86,9 +88,9 @@ class GameUI:
                 buttonHalfWidth*2, 
                 buttonHeight, 
                 "Player vs Computer", 
-                True
-            ), 
-            self.buttonMaker.create(
+                actionPrint
+            )), 
+            (Button(pygame, self.mainArea).create(
                 self.color_menu,
                 self.color_darktext,
                 self.color_border,
@@ -97,9 +99,9 @@ class GameUI:
                 buttonHalfWidth*2, 
                 buttonHeight, 
                 "Player vs Player", 
-                True
-            ),         
-            self.buttonMaker.create(
+                actionPrint
+            )),         
+            (Button(pygame, self.mainArea).create(
                 self.color_menu,
                 self.color_darktext,
                 self.color_border,
@@ -108,9 +110,9 @@ class GameUI:
                 buttonHalfWidth*2, 
                 buttonHeight, 
                 "Player Tournament", 
-                True
-            ), 
-            self.buttonMaker.create(
+                actionPrint
+            )), 
+            (Button(pygame, self.mainArea).create(
                 self.color_menu,
                 self.color_darktext,
                 self.color_border,
@@ -119,11 +121,10 @@ class GameUI:
                 buttonHalfWidth*2, 
                 buttonHeight, 
                 "Exit", 
-                True
-            )      
+                actionPrint
+            ))      
         )
         
-
 
 
 

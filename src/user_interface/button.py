@@ -8,15 +8,16 @@ class Button:
 
 	def create(self, bgcolor, textcolor, bordercolor, left, top, width, height, text, action):
 
-		box = self.pygame.Rect(
+		self.box = self.pygame.Rect(
 					left, 
 					top, 
 					width, 
 					height
 				)
 
-
-		self.area.fill(bgcolor, box)
-
+		self.action = action
+		self.area.fill(bgcolor, self.box)
+		self.text = text
 		test = centeredtext(text, left, top, width, height, self.pygame, 28, textcolor)
 		test.draw(self.area, bordercolor)
+		return self
