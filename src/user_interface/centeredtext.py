@@ -14,5 +14,5 @@ class centeredtext(object):
     def draw(self, screen):
         screen.blit(self.txt, self.coords)
         # for testing purposes, draw the rectangle too
-        rect = Rect(self.x, self.y, self.w, self.h)
+        rect = self.pygame.Rect(self.x, self.y, self.w, self.h)
         self.pygame.draw.rect(screen, (0,0,0), rect, 1)
