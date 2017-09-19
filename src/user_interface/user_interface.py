@@ -193,5 +193,5 @@ class GameUI:
 
 
 ui = GameUI()
-# while 1:
-#     ui.tic()
+while 1:
+    ui.tic()
