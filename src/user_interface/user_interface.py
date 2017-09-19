@@ -1,6 +1,8 @@
-import datetime, random, pygame, sys, time
+import datetime, random, pygame, sys, time, pygame_textinput
 from button import Button
 from centeredtext import centeredtext
+from textbox import TextBox
+
 
 def actionPrint():
     print("test")   
@@ -160,7 +162,7 @@ class GameUI:
         self.mainArea.fill(self.color_background)
         buttonHalfWidth = 150
         buttonHeight = 50
-        
+
         self.visiblebuttons = (
             (Button(pygame, self.mainArea).create(
                 self.color_menu,
