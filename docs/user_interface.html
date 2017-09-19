@@ -33,8 +33,7 @@
 <dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
 </font></dt><dd>
 <dl>
-<dt><font face="helvetica, arial"><a href="user_interface.html#Button">Button</a>
-</font></dt><dt><font face="helvetica, arial"><a href="user_interface.html#GameUI">GameUI</a>
+<dt><font face="helvetica, arial"><a href="user_interface.html#GameUI">GameUI</a>
 </font></dt></dl>
 </dd>
 </dl>
@@ -42,29 +41,19 @@
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#000000" face="helvetica, arial"><a name="Button">class <strong>Button</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
-    
-<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%">Methods defined here:<br>
-<dl><dt><a name="Button-__init__"><strong>__init__</strong></a>(self, ui, left, top, width, height, text, action)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
-
-<hr>
-Data descriptors defined here:<br>
-<dl><dt><strong>__dict__</strong></dt>
-<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
-</dl>
-<dl><dt><strong>__weakref__</strong></dt>
-<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
-</dl>
-</td></tr></table> <p>
-<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
-<tr bgcolor="#ffc8d8">
-<td colspan=3 valign=bottom>&nbsp;<br>
 <font color="#000000" face="helvetica, arial"><a name="GameUI">class <strong>GameUI</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
     
-<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#GameUI">GameUI</a>&nbsp;encapsulates&nbsp;a&nbsp;pygame&nbsp;and&nbsp;an&nbsp;area.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
 <dl><dt><a name="GameUI-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="GameUI-checkButtonClick"><strong>checkButtonClick</strong></a>(self, pos)</dt></dl>
+
+<dl><dt><a name="GameUI-displayCreateTournament"><strong>displayCreateTournament</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="GameUI-displayGame"><strong>displayGame</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="GameUI-displayMainMenu"><strong>displayMainMenu</strong></a>(self)</dt></dl>
 
@@ -78,5 +67,20 @@ Data descriptors defined here:<br>
 <dl><dt><strong>__weakref__</strong></dt>
 <dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
 </dl>
-</td></tr></table></td></tr></table>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-actionPrint"><strong>actionPrint</strong></a>()</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>ui</strong> = &lt;user_interface.GameUI object&gt;</td></tr></table>
 </body></html>
