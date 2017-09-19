@@ -6,6 +6,9 @@ def actionPrint():
     print("test")
 
 class GameUI:
+    """
+	GameUI is the main class for the Game User Interface
+	"""
     def __init__(self):
         self.WINDOW_SIZE = width, height = 1280, 720
         self.TOP_RATIO = 2/7
@@ -188,5 +191,5 @@ class GameUI:
 
 
 ui = GameUI()
-while 1:
-    ui.tic()
+# while 1:
+#     ui.tic()
