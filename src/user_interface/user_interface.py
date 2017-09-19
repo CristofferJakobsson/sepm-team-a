@@ -5,6 +5,8 @@ from centeredtext import centeredtext
 def actionPrint(message):
     print(message)
 
+def exitGame(message):
+    sys.exit()
 
 class GameUI: 
     def __init__(self): 
@@ -121,9 +123,10 @@ class GameUI:
                 buttonHalfWidth*2, 
                 buttonHeight, 
                 "Exit", 
-                actionPrint
+                exitGame
             ))      
         )
+
         
 
 
