@@ -2,11 +2,8 @@ import datetime, random, pygame, sys, time
 from button import Button
 from centeredtext import centeredtext
 
-def actionPrint(message):
-    print(message)
-
-def exitGame(message):
-    sys.exit()
+def actionPrint():
+    print("test")   
 
 class GameUI: 
     def __init__(self): 
@@ -21,6 +18,7 @@ class GameUI:
         self.color_darktext = pygame.Color(74, 74, 74)
 
         pygame.init()
+
 
         pygame.display.set_caption("Tic Tac Toe")
 
@@ -62,12 +60,12 @@ class GameUI:
             2
         )
         
-        self.displayMainMenu(pygame)
+        self.displayMainMenu()
     
     def checkButtonClick(self, pos):
         for button in self.visiblebuttons: 
             offset = button.area.get_offset()
-            if (button.box.collidepoint((pos[0]-offset[0]), (pos[1]-offset[1]))): button.action(button.text)
+            if (button.box.collidepoint((pos[0]-offset[0]), (pos[1]-offset[1]))): button.action()
 
     def tic(self):
         for event in pygame.event.get():
@@ -76,7 +74,8 @@ class GameUI:
             
         pygame.display.flip()
 
-    def displayMainMenu(self, pygame):
+    def displayMainMenu(self):
+        self.mainArea.fill(self.color_background)
         buttonHalfWidth = 200
         buttonHeight = 50
 
@@ -90,7 +89,7 @@ class GameUI:
                 buttonHalfWidth*2, 
                 buttonHeight, 
                 "Player vs Computer", 
-                actionPrint
+                self.displayGame
             )), 
             (Button(pygame, self.mainArea).create(
                 self.color_menu,
@@ -101,7 +100,7 @@ class GameUI:
                 buttonHalfWidth*2, 
                 buttonHeight, 
                 "Player vs Player", 
-                actionPrint
+                self.displayGame
             )),         
             (Button(pygame, self.mainArea).create(
                 self.color_menu,
@@ -112,7 +111,7 @@ class GameUI:
                 buttonHalfWidth*2, 
                 buttonHeight, 
                 "Player Tournament", 
-                actionPrint
+                self.displayCreateTournament
             )), 
             (Button(pygame, self.mainArea).create(
                 self.color_menu,
@@ -123,12 +122,69 @@ class GameUI:
                 buttonHalfWidth*2, 
                 buttonHeight, 
                 "Exit", 
-                exitGame
+                sys.exit
             ))      
         )
 
-        
+    def displayGame(self):
+        self.mainArea.fill(self.color_background)
+        buttonHalfWidth = 150
+        buttonHeight = 50
 
+        self.visiblebuttons = (
+            (Button(pygame, self.mainArea).create(
+                self.color_menu,
+                self.color_darktext,
+                self.color_border,
+                100, 
+                450, 
+                buttonHalfWidth*2, 
+                buttonHeight, 
+                "Back", 
+                self.displayMainMenu
+            )),
+            (Button(pygame, self.mainArea).create(
+                self.color_menu,
+                self.color_darktext,
+                self.color_border,
+                900, 
+                450, 
+                buttonHalfWidth*2, 
+                buttonHeight, 
+                "Forfit", 
+                self.displayMainMenu
+            ))
+        )
+
+    def displayCreateTournament(self):
+        self.mainArea.fill(self.color_background)
+        buttonHalfWidth = 150
+        buttonHeight = 50
+        
+        self.visiblebuttons = (
+            (Button(pygame, self.mainArea).create(
+                self.color_menu,
+                self.color_darktext,
+                self.color_border,
+                100, 
+                450, 
+                buttonHalfWidth*2, 
+                buttonHeight, 
+                "Back", 
+                self.displayMainMenu
+            )),
+            (Button(pygame, self.mainArea).create(
+                self.color_menu,
+                self.color_darktext,
+                self.color_border,
+                900, 
+                450, 
+                buttonHalfWidth*2, 
+                buttonHeight, 
+                "Start Tournament", 
+                self.displayMainMenu
+            ))
+        )
 
 
 ui = GameUI()
