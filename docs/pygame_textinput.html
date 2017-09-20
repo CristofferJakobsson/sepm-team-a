@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module pygame_textinput</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>pygame_textinput</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/kasperramstrom/Development/school/sepm-team-a/src/user_interface/pygame_textinput.py">/Users/kasperramstrom/Development/school/sepm-team-a/src/user_interface/pygame_textinput.py</a></font></td></tr></table>
+    <p><tt>Copyright&nbsp;2017,&nbsp;Silas&nbsp;Gyger,&nbsp;silasgyger@gmail.com,&nbsp;All&nbsp;rights&nbsp;reserved.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="pygame.locals.html">pygame.locals</a><br>
+</td><td width="25%" valign=top><a href="pygame.html">pygame</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="pygame_textinput.html#TextInput">TextInput</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="TextInput">class <strong>TextInput</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;class&nbsp;lets&nbsp;the&nbsp;user&nbsp;input&nbsp;a&nbsp;piece&nbsp;of&nbsp;text,&nbsp;e.g.&nbsp;a&nbsp;name&nbsp;or&nbsp;a&nbsp;message.<br>
+&nbsp;<br>
+This&nbsp;class&nbsp;let's&nbsp;the&nbsp;user&nbsp;input&nbsp;a&nbsp;short,&nbsp;one-lines&nbsp;piece&nbsp;of&nbsp;text&nbsp;at&nbsp;a&nbsp;blinking&nbsp;cursor<br>
+that&nbsp;can&nbsp;be&nbsp;moved&nbsp;using&nbsp;the&nbsp;arrow-keys.&nbsp;Delete,&nbsp;home&nbsp;and&nbsp;end&nbsp;work&nbsp;as&nbsp;well.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="TextInput-__init__"><strong>__init__</strong></a>(self, font_family='', font_size=35, antialias=True, text_color=(0, 0, 0), cursor_color=(0, 0, 1), repeat_keys_initial_ms=400, repeat_keys_interval_ms=35)</dt><dd><tt>Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font_family:&nbsp;Name&nbsp;or&nbsp;path&nbsp;of&nbsp;the&nbsp;font&nbsp;that&nbsp;should&nbsp;be&nbsp;used.&nbsp;Default&nbsp;is&nbsp;pygame-font<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font_size:&nbsp;Size&nbsp;of&nbsp;the&nbsp;font&nbsp;in&nbsp;pixels<br>
+&nbsp;&nbsp;&nbsp;&nbsp;antialias:&nbsp;(bool)&nbsp;Determines&nbsp;if&nbsp;antialias&nbsp;is&nbsp;used&nbsp;on&nbsp;fonts&nbsp;or&nbsp;not<br>
+&nbsp;&nbsp;&nbsp;&nbsp;text_color:&nbsp;Color&nbsp;of&nbsp;the&nbsp;text<br>
+&nbsp;&nbsp;&nbsp;&nbsp;repeat_keys_initial_ms:&nbsp;ms&nbsp;until&nbsp;the&nbsp;keydowns&nbsp;get&nbsp;repeated&nbsp;when&nbsp;a&nbsp;key&nbsp;is&nbsp;not&nbsp;released<br>
+&nbsp;&nbsp;&nbsp;&nbsp;repeat_keys_interval_ms:&nbsp;ms&nbsp;between&nbsp;to&nbsp;keydown-repeats&nbsp;if&nbsp;key&nbsp;is&nbsp;not&nbsp;released</tt></dd></dl>
+
+<dl><dt><a name="TextInput-get_cursor_position"><strong>get_cursor_position</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TextInput-get_surface"><strong>get_surface</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TextInput-get_text"><strong>get_text</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TextInput-set_cursor_color"><strong>set_cursor_color</strong></a>(self, color)</dt></dl>
+
+<dl><dt><a name="TextInput-set_text_color"><strong>set_text_color</strong></a>(self, color)</dt></dl>
+
+<dl><dt><a name="TextInput-update"><strong>update</strong></a>(self, events)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>
