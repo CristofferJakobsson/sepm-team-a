@@ -12,6 +12,11 @@ class GameUI:
 	GameUI is the main class for the Game User Interface
 	"""
 	def __init__(self):
+		"""
+		Construct a new 'GameUI' object.
+
+		:return: returns nothing
+		"""
 		self.WINDOW_SIZE = width, height = 1280, 720
 		self.TOP_RATIO = 2/7
 		self.BOTTOM_RATIO = 5/7
@@ -71,14 +76,22 @@ class GameUI:
 		self.displayMainMenu()
 
 	def checkButtonClick(self, pos):
+		"""
+		Check if the clicked screen-coordinates collide with existing buttons.
+
+		:param self: A reference to the GameUI object itself
+		:param pos: The position where the screen was clicked
+		"""
 		for button in self.visiblebuttons:
 			offset = button.area.get_offset()
 			if (button.box.collidepoint((pos[0]-offset[0]), (pos[1]-offset[1]))): button.action()
-		# for button in self.visiblebuttons2:
-		# 	offset = button.area.get_offset()
-		# 	if (button.box.collidepoint((pos[0]-offset[0]), (pos[1]-offset[1]))): button.action(button.arg1, button.arg2)
 
 	def tic(self):
+		"""
+		A time-tic in the running game state.
+
+		:param self: A reference to the GameUI object itself
+		"""
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT: sys.exit()
 			if event.type == pygame.MOUSEBUTTONDOWN: self.checkButtonClick(pygame.mouse.get_pos())
@@ -86,6 +99,11 @@ class GameUI:
 		pygame.display.flip()
 
 	def displayMainMenu(self):
+		"""
+		Displays the main menu of the GameUI object on the screen.
+
+		:param self: A reference to the GameUI object itself
+		"""
 		self.mainArea.fill(self.color_background)
 		buttonHalfWidth = 200
 		buttonHeight = 50
@@ -138,6 +156,13 @@ class GameUI:
 		)
 
 	def displayGame(self, player1, player2):
+		"""
+		Displays a game-view on the screen.
+
+		:param self: A reference to the GameUI object itself
+		:param player1: Name of player 1
+		:param player2: Name of player 2
+		"""
 		self.mainArea.fill(self.color_background)
 		buttonHalfWidth = 150
 		buttonHeight = 50
@@ -189,6 +214,11 @@ class GameUI:
 		self.displayGame(self.playernames[0], self.playernames[1])
 
 	def displayCreateTournament(self):
+		"""
+		Displays the tournament creation view on the screen.
+
+		:param self: A reference to the GameUI object itself
+		"""
 		self.mainArea.fill(self.color_background)
 		buttonHalfWidth = 150
 		buttonHeight = 50
@@ -256,9 +286,6 @@ class GameUI:
 			)
 		)
 			
-
-
-
 
 ui = GameUI()
 while 1:
