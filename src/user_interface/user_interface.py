@@ -62,8 +62,7 @@ class GameUI:
 		)
 		self.askfornames  = Playernames(self.mainArea)
 
-		title = centeredtext("Tic Tac Toe", 0,0, 1280, 75, pygame, 100, self.color_lighttext)
-		title.draw(self.secondaryArea, self.color_menu)
+		self.renderTop("","", 1)
 
 		self.border   = pygame.draw.line(
 			self.screen,
@@ -74,6 +73,51 @@ class GameUI:
 			2
 		)
 		self.displayMainMenu()
+
+	def renderTop(self,player1, player2, playing):
+		buttonHalfWidth = 200
+		buttonHeight = 50
+
+		self.secondaryArea.fill(self.color_menu)
+		
+		title = centeredtext("Tic Tac Toe", 0,0, 1280, 75, pygame, 100, self.color_lighttext)
+		title.draw(self.secondaryArea, self.color_menu)
+	
+		if len(player1) != 0:
+			(Button(pygame, self.secondaryArea).create(
+				self.color_menu,
+				self.color_darktext,
+				self.color_border,
+				100,
+				100,
+				buttonHalfWidth*2,
+				buttonHeight,
+				"X  " + player1,
+				self.displaySingelPlayer
+			))
+			if playing == 1:
+				box = pygame.Rect(100,150,400,5)
+				self.secondaryArea.fill(self.color_background, box)
+
+
+			
+
+		if len(player2) != 0:
+			(Button(pygame, self.secondaryArea).create(
+				self.color_menu,
+				self.color_darktext,
+				self.color_border,
+				825,
+				100,
+				buttonHalfWidth*2,
+				buttonHeight,
+				"O  " + player2,
+				self.displayTwoPlayer
+			))
+			if playing == 2:
+				box = pygame.Rect(825,150,400,5)
+				self.secondaryArea.fill(self.color_background, box)
+
 
 	def checkButtonClick(self, pos):
 		"""
@@ -108,6 +152,7 @@ class GameUI:
 		buttonHalfWidth = 200
 		buttonHeight = 50
 
+		self.renderTop("","",1)
 		self.visiblebuttons = (
 			(Button(pygame, self.mainArea).create(
 				self.color_menu,
@@ -166,6 +211,8 @@ class GameUI:
 		self.mainArea.fill(self.color_background)
 		buttonHalfWidth = 150
 		buttonHeight = 50
+
+		self.renderTop(player1, player2, 1)
 
 		self.visiblebuttons = (
 			(Button(pygame, self.mainArea).create(
