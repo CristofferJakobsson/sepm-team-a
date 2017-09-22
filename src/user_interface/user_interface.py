@@ -1,6 +1,7 @@
 import datetime, random, pygame, sys, time
 from button import Button
 from centeredtext import centeredtext
+from board import Board
 
 def actionPrint():
     print("test")   
@@ -185,6 +186,9 @@ class GameUI:
                 self.displayMainMenu
             ))
         )
+
+        def spawnGame(self):
+            game = Board("P1", "P2", )
 
 
 ui = GameUI()
