@@ -3,12 +3,13 @@ from centeredtext import centeredtext
 
 class Button:
 	"""
-	Button encapsulates a pygame and an area.
+	Button encapsulates a pygame and a clickable area which invokes a given action.
 	"""
 	def __init__(self, pygame, area):
 		"""
-		Construct a new 'Button' object.
+		Construct a new Button object.
 
+		:param self: A reference to the Button object itself
 		:param pygame: The pygame instance running
 		:param area: The area on which to draw on
 		:return: returns nothing

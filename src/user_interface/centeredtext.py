@@ -4,8 +4,9 @@ class centeredtext(object):
   """
   def __init__(self, text, x,y,w,h, pygame, fontsize, color=(0,0,0)):
     """
-    Construct a new 'centeredtext' object.
+    Construct a new centeredtext object.
 
+    :param self: A reference to the centeredtext object itself
     :param text: The text to center within the given object
     :param x: The leftmost coordinate of the given object of which to center a text within
     :param y: The rightmost coordinate of the given object of which to center a text within

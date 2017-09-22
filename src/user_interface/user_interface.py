@@ -13,8 +13,9 @@ class GameUI:
 	"""
 	def __init__(self):
 		"""
-		Construct a new 'GameUI' object.
+		Construct a new GameUI object.
 
+		:param self: A reference to the GameUI object itself
 		:return: returns nothing
 		"""
 		self.WINDOW_SIZE = width, height = 1280, 720
@@ -75,14 +76,22 @@ class GameUI:
 		self.displayMainMenu()
 
 	def renderTop(self,player1, player2, playing):
+		"""
+		Renders the top part of the screen when playing a game.
+
+		:param self: A reference to the GameUI object itself
+		:param player1: Player 1 in the active game
+		:param player2: Player 2 in the active game
+		:param playing: A value deciding which player is currently playing (1 == player1 etc.)
+		"""
 		buttonHalfWidth = 200
 		buttonHeight = 50
 
 		self.secondaryArea.fill(self.color_menu)
-		
+
 		title = centeredtext("Tic Tac Toe", 0,0, 1280, 75, pygame, 100, self.color_lighttext)
 		title.draw(self.secondaryArea, self.color_menu)
-	
+
 		if len(player1) != 0:
 			(Button(pygame, self.secondaryArea).create(
 				self.color_menu,
@@ -100,7 +109,7 @@ class GameUI:
 				self.secondaryArea.fill(self.color_background, box)
 
 
-			
+
 
 		if len(player2) != 0:
 			(Button(pygame, self.secondaryArea).create(
@@ -240,21 +249,31 @@ class GameUI:
 		)
 
 	def displaySingelPlayer(self):
+		"""
+		Displays the view for a singleplayer game (player versus computer)
+
+		:param self: A reference to the GameUI object itself
+		"""
 		self.mainArea.fill(self.color_background)
 		buttonHalfWidth = 150
 		buttonHeight = 50
-		
+
 		self.playernames = []
-		
+
 		self.playernames.append(self.askfornames.ask("Player 1"))
 		self.playernames.append("Computer")
 		self.displayGame(self.playernames[0], self.playernames[1])
 
 	def displayTwoPlayer(self):
+		"""
+		Displays the view for a multiplayer game (player versus player)
+
+		:param self: A reference to the GameUI object itself
+		"""
 		self.mainArea.fill(self.color_background)
 		buttonHalfWidth = 150
 		buttonHeight = 50
-		
+
 		self.playernames = []
 		self.playernames.append(self.askfornames.ask("Player 1"))
 		self.playernames.append(self.askfornames.ask("Player 2"))
@@ -269,20 +288,20 @@ class GameUI:
 		self.mainArea.fill(self.color_background)
 		buttonHalfWidth = 150
 		buttonHeight = 50
-		
+
 		self.playernames = []
-		
+
 		for n in range(8):
 			self.playernames.append(self.askfornames.ask("Player " + str(n+1)))
 
 		self.mainArea.fill(self.color_background)
-		
+
 		self.visiblebuttons = []
-		
+
 		x = 20;
 		y = 20;
 
-		for n in range(8):	
+		for n in range(8):
 			y = y + 80
 
 			if n % 2 == 0:
@@ -305,7 +324,7 @@ class GameUI:
 						self.displayMainMenu
 					)
 				)
-			
+
 		self.visiblebuttons.append(
 			Button(pygame, self.mainArea).create(
 				self.color_menu,
@@ -332,7 +351,7 @@ class GameUI:
 				self.displayMainMenu
 			)
 		)
-			
+
 
 ui = GameUI()
 while 1:
