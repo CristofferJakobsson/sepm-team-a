@@ -2,10 +2,18 @@ import datetime, random, pygame, sys, time
 from pygame.locals import *
 from button import Button
 from centeredtext import centeredtext
+#from board import Board
 from player_names import Playernames
 
+import sys
+sys.path.insert(0, '../game_platform')
+import board
+
+
+
 def actionPrint():
-	print("test")
+    print("test")
+
 
 class GameUI:
 	"""
@@ -18,6 +26,8 @@ class GameUI:
 		:param self: A reference to the GameUI object itself
 		:return: returns nothing
 		"""
+
+		self.pygame = pygame
 		self.WINDOW_SIZE = width, height = 1280, 720
 		self.TOP_RATIO = 2/7
 		self.BOTTOM_RATIO = 5/7
@@ -34,7 +44,7 @@ class GameUI:
 		self.playernames = []
 
 
-		self.currentplayerEdit = 0;
+		self.currentplayerEdit = 0
 
 		pygame.display.set_caption("Tic Tac Toe")
 
@@ -249,6 +259,8 @@ class GameUI:
 			))
 		)
 
+		gameBoard = board.Board(self)
+
 	def displaySingelPlayer(self):
 		"""
 		Displays the view for a singleplayer game (player versus computer)
@@ -298,9 +310,9 @@ class GameUI:
 		self.mainArea.fill(self.color_background)
 
 		self.visiblebuttons = []
-
-		x = 20;
-		y = 20;
+		
+		x = 20
+		y = 20
 
 		for n in range(8):
 			y = y + 80

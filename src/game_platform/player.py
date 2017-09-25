@@ -17,9 +17,10 @@ class Player(metaclass=abc.ABCMeta)
 class Human(Player):
 	def __init__(self, name):
 		self.name = name
+		self.human = true
 
 	def isHuman(self):
-		return true
+		return self.human
 
 	def play(self, state):
 		pass
@@ -28,9 +29,10 @@ class Computer(Player):
 	def __init__(self, name, level):
 		self.name = name
 		self.level = level
+		self.human = false
 
 	def isHuman(self):
-		return false
+		return self.human
 
 	def play(self, state):
 		pass
