@@ -26,7 +26,7 @@ class GameUI:
 		self.color_border 		= pygame.Color(144, 148, 150)
 		self.color_lighttext 	= pygame.Color(149, 152, 154)
 		self.color_darktext 	= pygame.Color(74, 74, 74)
-		self.color_lightgreen 	= pygame.Color(14,151,135)
+		self.color_darkgreen 	= pygame.Color(14,151,135)
 
 		pygame.init()
 
