@@ -1,21 +1,26 @@
-import pygame
+
 
 class Board:
     
-    def __init(self, player1, player2, gameArea, pygame)__:
+    def __init__(self, ui):
         self.gameState =   (0, 0, 0, 
                         0, 0, 0, 
                         0, 0, 0)
-        self.player1 = player1
-        self.player2 = player2
-        self.gameArea = gameArea
-        self.pygame = pygame
-
-
-        self.drawBoard(self, gameState, gameArea)
+        self.player1 = ui.playernames[0]
+        self.player2 = ui.playernames[1]
+        self.ui = ui
+        self.pygame = ui.pygame
+        self.gameArea = ui.mainArea.subsurface(
+                self.pygame.Rect(
+                    ui.mainArea.get_width()/2-200, 
+                    ui.mainArea.get_height()/2-200, 
+                    400, 
+                    400
+            ))
+        self.drawBoard()
 
     def drawBoard(self):
-        self.drawGrid(self.gameArea)
+        self.drawGrid()
 
 
     def drawGrid(self):
@@ -25,4 +30,4 @@ class Board:
         start1 = (height/3, 0)
         end1 = (height/3, width)
         
-        self.pygame.draw.line(self.gameArea, Color(120, 120, 120, 0.3), start1, end1, 10)
+        self.pygame.draw.line(self.gameArea, self.pygame.Color(120, 120, 120), start1, end1, 10)
