@@ -1,8 +1,16 @@
 import random
 
 class Tournament:
+	"""
+	Tournament encapsulates a number of players and handles the tournament mode of the game.
+	"""
+	def __init__(self, players):
+		"""
+		Construct a new Tournament object.
 
-	def __init__(self, players): 
+		:param self: A reference to the Tournament object itself
+		:return: returns nothing
+		"""
 		self.players = []
 		self.ontothenext = []
 		self.matches = []
@@ -17,22 +25,40 @@ class Tournament:
 		if len(self.players) % 2 != 0:
 			print("uneaven number of players given...")
 			# move one player to next round.
-			# r = random.randint(0, len(self.players)-1) 
+			# r = random.randint(0, len(self.players)-1)
 			r = 1
 			self.ontothenext.append(self.players[r])
 			self.players.remove(self.players[r])
-			print("player to move to next round: " + str(r)) 
+			print("player to move to next round: " + str(r))
 
 		self.makeMatches()
 
 	def debug(self):
+		"""
+		Prints out variables belonging to the Tournament object.
+
+		:param self: A reference to the Tournament object itself
+		:return: returns nothing
+		"""
 		print(self.players)
 		print(self.matches)
 		print(self.ontothenext)
-	
+
 	def getMatches(self):
+		"""
+		Returns the number of matches belonging to the Tournament object.
+
+		:param self: A reference to the Tournament object itself
+		:return: returns nothing
+		"""
 		return self.matches
 	def makeMatches(self):
+		"""
+		Appends a match to the Tournament object for each player belonging to the Tournament object.
+
+		:param self: A reference to the Tournament object itself
+		:return: returns nothing
+		"""
 		for n in range(len(self.players) / 2):
 			self.matches.append([
 				self.players[n],
@@ -40,6 +66,12 @@ class Tournament:
 				])
 
 	def setWinner(self, playername):
+		"""
+		Appends the current winners to a list belonging to the Tournament object which contains the players advancing to the next round.
+
+		:param self: A reference to the Tournament object itself
+		:return: returns nothing
+		"""
 		self.ontothenext.append(playername)
 		if len(self.matches) == 1:
 			self.matches = []
