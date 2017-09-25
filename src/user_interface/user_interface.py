@@ -21,11 +21,12 @@ class GameUI:
 		self.TOP_RATIO = 2/7
 		self.BOTTOM_RATIO = 5/7
 
-		self.color_background = pygame.Color(83, 178, 162)
-		self.color_menu = pygame.Color(247, 247, 247)
-		self.color_border = pygame.Color(144, 148, 150)
-		self.color_lighttext = pygame.Color(149, 152, 154)
-		self.color_darktext = pygame.Color(74, 74, 74)
+		self.color_background 	= pygame.Color(83, 178, 162)
+		self.color_menu 		= pygame.Color(247, 247, 247)
+		self.color_border 		= pygame.Color(144, 148, 150)
+		self.color_lighttext 	= pygame.Color(149, 152, 154)
+		self.color_darktext 	= pygame.Color(74, 74, 74)
+		self.color_lightgreen 	= pygame.Color(14,151,135)
 
 		pygame.init()
 
