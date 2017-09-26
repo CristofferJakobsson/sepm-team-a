@@ -7,7 +7,8 @@ from player_names import Playernames
 
 import sys
 sys.path.insert(0, '../game_platform')
-import board
+from game_platform import Game
+from player import Player, Human, Computer
 
 
 
@@ -119,9 +120,6 @@ class GameUI:
 				box = pygame.Rect(100,150,400,5)
 				self.secondaryArea.fill(self.color_background, box)
 
-
-
-
 		if len(player2) != 0:
 			(Button(pygame, self.secondaryArea).create(
 				self.color_menu,
@@ -158,9 +156,22 @@ class GameUI:
 		"""
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT: sys.exit()
-			if event.type == pygame.MOUSEBUTTONDOWN: self.checkButtonClick(pygame.mouse.get_pos())
+			if event.type == pygame.MOUSEBUTTONDOWN: 
+				if(pygame.mouse.get_pressed()[0]):
+					if(hasattr(self, 'game')):
+						if(self.game):
+							winstate = self.game.click(pygame.mouse.get_pos())
+							if  winstate == 1:
+								print("Player 1 Won")
+							if  winstate == 2:
+								print("Player 2 Won")
+							if winstate == 0:
+								print("Noone has won yet")
+							
+					self.checkButtonClick(pygame.mouse.get_pos())
 
 		pygame.display.flip()
+		
 
 	def displayMainMenu(self):
 		"""
@@ -258,8 +269,9 @@ class GameUI:
 				self.displayMainMenu
 			))
 		)
-
-		gameBoard = board.Board(self)
+		p1 = Human(player1)
+		p2 = Human(player2)
+		self.game = Game(self, p1, p2)
 
 	def displaySingelPlayer(self):
 		"""

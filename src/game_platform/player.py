@@ -1,6 +1,6 @@
 import abc
 
-class Player(metaclass=abc.ABCMeta)
+class Player(metaclass=abc.ABCMeta):
 	"""
 	Interface for player classes. 
 	"""
@@ -17,7 +17,7 @@ class Player(metaclass=abc.ABCMeta)
 class Human(Player):
 	def __init__(self, name):
 		self.name = name
-		self.human = true
+		self.human = True
 
 	def isHuman(self):
 		return self.human
@@ -29,7 +29,7 @@ class Computer(Player):
 	def __init__(self, name, level):
 		self.name = name
 		self.level = level
-		self.human = false
+		self.human = False
 
 	def isHuman(self):
 		return self.human
