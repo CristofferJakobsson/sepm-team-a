@@ -132,7 +132,7 @@ class GameUI:
 				"O  " + player2,
 				self.displayTwoPlayer
 			))
-			if playing == 2:
+			if playing == -1:
 				box = pygame.Rect(825,150,400,5)
 				self.secondaryArea.fill(self.color_background, box)
 

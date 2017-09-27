@@ -44,6 +44,7 @@ class Board:
         self.pygame.draw.circle(self.gameArea, self.color_circle, box.center, math.floor((box.height - self.iconoffset)/2), self.iconthickness)
 
     def updateBoardState(self, state):
+        self.ui.renderTop(self.player1, self.player2, self.ui.game.currentplayer)
         for box in self.boxes:
             if state[box.id] == 1:
                 self.drawCross(box.rect)

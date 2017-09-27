@@ -11,7 +11,6 @@ class Game:
                             0, 0, 0]
 
         self.ui = ui
-        # self.nextplayer = 1
         self.currentplayer = 1
         if random.uniform(0, 1) > 0.5:
             self.currentplayer = -1
@@ -40,10 +39,8 @@ class Game:
 
     def makemove(self,boxId):
         self.gameState[boxId] = self.currentplayer
-
-        self.board.updateBoardState(self.gameState)
-        
         self.currentplayer = self.currentplayer * -1
+        self.board.updateBoardState(self.gameState)
 
     def click(self, mousepos):
         boxId = self.board.findClickedBox(mousepos)
