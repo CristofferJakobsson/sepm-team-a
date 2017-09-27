@@ -6,8 +6,8 @@ class Game:
         self.player1 = player1
         self.player2 = player2
 
-        self.gameState =   [0, 0, 0, 
-                            0, 0, 0, 
+        self.gameState =   [0, 0, 0,
+                            0, 0, 0,
                             0, 0, 0]
 
         self.ui = ui
