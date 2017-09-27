@@ -33,8 +33,8 @@ class Game:
             if (self.gameState[state[0]] + self.gameState[state[1]] + self.gameState[state[2]]) == 3:
                 return 1
             if (self.gameState[state[0]] + self.gameState[state[1]] + self.gameState[state[2]]) == -3:
-                return 2
-        return 0
+                return -1
+        return None
 
 
     def makemove(self,boxId):
@@ -46,8 +46,7 @@ class Game:
         boxId = self.board.findClickedBox(mousepos)
         if self.gameState[boxId] != 0:
             return
-        
-        self.makemove(boxId)
 
+        self.makemove(boxId)
 
         return self.checkWin()

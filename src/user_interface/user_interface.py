@@ -165,7 +165,7 @@ class GameUI:
 								print("Player 1 Won")
 							if  winstate == 2:
 								print("Player 2 Won")
-							if winstate == 0:
+							if winstate == None:
 								print("Noone has won yet")
 							
 					self.checkButtonClick(pygame.mouse.get_pos())
