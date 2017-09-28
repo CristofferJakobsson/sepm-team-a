@@ -95,6 +95,7 @@ class GameUI:
 		:param player1: Player 1 in the active game
 		:param player2: Player 2 in the active game
 		:param playing: A value deciding which player is currently playing (1 == player1 etc.)
+		:return: returns nothing
 		"""
 		buttonHalfWidth = 200
 		buttonHeight = 50
@@ -143,6 +144,7 @@ class GameUI:
 
 		:param self: A reference to the GameUI object itself
 		:param pos: The position where the screen was clicked
+		:return: returns nothing
 		"""
 		for button in self.visiblebuttons:
 			offset = button.area.get_offset()
@@ -153,16 +155,17 @@ class GameUI:
 		A time-tic in the running game state.
 
 		:param self: A reference to the GameUI object itself
+		:return: returns nothing
 		"""
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT: sys.exit()
-			if event.type == pygame.MOUSEBUTTONDOWN: 
+			if event.type == pygame.MOUSEBUTTONDOWN:
 				if(pygame.mouse.get_pressed()[0]):
 					if(hasattr(self, 'game')):
 						if(self.game):
-							self.game.click(pygame.mouse.get_pos())							
+							self.game.click(pygame.mouse.get_pos())
 					self.checkButtonClick(pygame.mouse.get_pos())
-			
+
 		if(hasattr(self, 'game')):
 			if(self.game):
 				self.game.gameTic()
@@ -174,6 +177,7 @@ class GameUI:
 		Displays the main menu of the GameUI object on the screen.
 
 		:param self: A reference to the GameUI object itself
+		:return: returns nothing
 		"""
 		self.mainArea.fill(self.color_background)
 		buttonHalfWidth = 200
@@ -234,6 +238,7 @@ class GameUI:
 		:param self: A reference to the GameUI object itself
 		:param player1: Name of player 1
 		:param player2: Name of player 2
+		:return: returns nothing
 		"""
 		self.mainArea.fill(self.color_background)
 		buttonHalfWidth = 150
@@ -274,6 +279,7 @@ class GameUI:
 		Displays the view for a singleplayer game (player versus computer)
 
 		:param self: A reference to the GameUI object itself
+		:return: returns nothing
 		"""
 		self.mainArea.fill(self.color_background)
 		buttonHalfWidth = 150
@@ -290,6 +296,7 @@ class GameUI:
 		Displays the view for a multiplayer game (player versus player)
 
 		:param self: A reference to the GameUI object itself
+		:return: returns nothing
 		"""
 		self.mainArea.fill(self.color_background)
 		buttonHalfWidth = 150
@@ -305,6 +312,7 @@ class GameUI:
 		Displays the tournament creation view on the screen.
 
 		:param self: A reference to the GameUI object itself
+		:return: returns nothing
 		"""
 		self.mainArea.fill(self.color_background)
 		buttonHalfWidth = 150
@@ -318,7 +326,7 @@ class GameUI:
 		self.mainArea.fill(self.color_background)
 
 		self.visiblebuttons = []
-		
+
 		x = 20
 		y = 20
 
