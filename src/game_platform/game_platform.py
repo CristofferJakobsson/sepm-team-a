@@ -34,7 +34,7 @@ class Game:
 		Displays the Game's user interface
 
 		:param self: A reference to the Game object itself
-		:param self: The user interface to display
+		:param ui: The user interface to display
 		:return: returns nothing
 		"""
         self.board = Board(ui)
@@ -59,21 +59,34 @@ class Game:
                 return 1
             if (self.gameState[state[0]] + self.gameState[state[1]] + self.gameState[state[2]]) == -3:
                 return -1
-        if len([i for i in range(9) if self.gameState[i] == 0]) == 0: 
+        if len([i for i in range(9) if self.gameState[i] == 0]) == 0:
             return 0
         return None
 
     def validmove(self, boxId):
+        """
+		Checks if a given move is valid
+
+		:param self: A reference to the Game object itself
+		:param boxId: the given index to be checked if a move can be made upon
+		:return: returns a boolean deciding whether the given move is valid
+		"""
         return ((self.gameState[boxId] == 0) and (0 <= boxId <= 8))
 
     def gameTic(self):
+        """
+		Performs a Player move if it's valid
+
+		:param self: A reference to the Game object itself
+		:return: returns nothing
+		"""
         boxId = -1
 
         if self.currentplayer == 1:
             boxId = self.player1.play(self.gameState)
         if self.currentplayer == -1:
             boxId = self.player2.play(self.gameState)
-        
+
         if self.validmove(boxId):
             self.makemove(boxId)
 
@@ -97,7 +110,7 @@ class Game:
 		:param self: A reference to the GameUI object itself
 		:param mousepos: The coordinates of where the mouse was clicked
 		:return: returns a boolean whether current Player has won
-		""" 
+		"""
         if self.currentplayer == 1:
             if isinstance(self.player1, Computer):
                 return
