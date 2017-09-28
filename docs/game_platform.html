@@ -62,10 +62,15 @@
 :param&nbsp;mousepos:&nbsp;The&nbsp;coordinates&nbsp;of&nbsp;where&nbsp;the&nbsp;mouse&nbsp;was&nbsp;clicked<br>
 :return:&nbsp;returns&nbsp;a&nbsp;boolean&nbsp;whether&nbsp;current&nbsp;Player&nbsp;has&nbsp;won</tt></dd></dl>
 
-<dl><dt><a name="Game-displayBoard"><strong>displayBoard</strong></a>(self, ui)</dt><dd><tt>Displays&nbsp;the&nbsp;<a href="#Game">Game</a>'s&nbsp;user&nbsp;interface&nbsp;<br>
+<dl><dt><a name="Game-displayBoard"><strong>displayBoard</strong></a>(self, ui)</dt><dd><tt>Displays&nbsp;the&nbsp;<a href="#Game">Game</a>'s&nbsp;user&nbsp;interface<br>
 &nbsp;<br>
 :param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Game">Game</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
-:param&nbsp;self:&nbsp;The&nbsp;user&nbsp;interface&nbsp;to&nbsp;display<br>
+:param&nbsp;ui:&nbsp;The&nbsp;user&nbsp;interface&nbsp;to&nbsp;display<br>
+:return:&nbsp;returns&nbsp;nothing</tt></dd></dl>
+
+<dl><dt><a name="Game-gameTic"><strong>gameTic</strong></a>(self)</dt><dd><tt>Performs&nbsp;a&nbsp;Player&nbsp;move&nbsp;if&nbsp;it's&nbsp;valid<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Game">Game</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
 :return:&nbsp;returns&nbsp;nothing</tt></dd></dl>
 
 <dl><dt><a name="Game-makemove"><strong>makemove</strong></a>(self, boxId)</dt><dd><tt>Performs&nbsp;a&nbsp;move&nbsp;for&nbsp;the&nbsp;current&nbsp;player.<br>
@@ -73,6 +78,12 @@
 :param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Game">Game</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
 :param&nbsp;boxId:&nbsp;The&nbsp;index&nbsp;of&nbsp;where&nbsp;the&nbsp;move&nbsp;will&nbsp;be&nbsp;done&nbsp;in&nbsp;the&nbsp;game&nbsp;state&nbsp;list<br>
 :return:&nbsp;returns&nbsp;nothing</tt></dd></dl>
+
+<dl><dt><a name="Game-validmove"><strong>validmove</strong></a>(self, boxId)</dt><dd><tt>Checks&nbsp;if&nbsp;a&nbsp;given&nbsp;move&nbsp;is&nbsp;valid<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Game">Game</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:param&nbsp;boxId:&nbsp;the&nbsp;given&nbsp;index&nbsp;to&nbsp;be&nbsp;checked&nbsp;if&nbsp;a&nbsp;move&nbsp;can&nbsp;be&nbsp;made&nbsp;upon<br>
+:return:&nbsp;returns&nbsp;a&nbsp;boolean&nbsp;deciding&nbsp;whether&nbsp;the&nbsp;given&nbsp;move&nbsp;is&nbsp;valid</tt></dd></dl>
 
 <hr>
 Data descriptors defined here:<br>
