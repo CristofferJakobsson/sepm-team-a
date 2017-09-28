@@ -4,7 +4,7 @@ def adjustMousePos(mousepos, offset):
     return ((mousepos[0]-offset[0]), mousepos[1]-offset[1])
 
 class Board:
-    
+
     def __init__(self, ui):
         print("Hello thar")
 
@@ -14,9 +14,9 @@ class Board:
         self.pygame = ui.pygame
         self.gameArea = ui.mainArea.subsurface(
                 self.pygame.Rect(
-                    ui.mainArea.get_width()/2-200, 
-                    ui.mainArea.get_height()/2-200, 
-                    400, 
+                    ui.mainArea.get_width()/2-200,
+                    ui.mainArea.get_height()/2-200,
+                    400,
                     400
             ))
         self.boxes = []
@@ -25,11 +25,11 @@ class Board:
         self.color_cross = self.pygame.Color(75, 75, 75)
         self.color_circle = self.pygame.Color(240, 235, 202)
         self.iconthickness = 15
-        
+
         self.drawBoard()
 
     def drawCross(self, box):
-        
+
         start1 = ((box.left + self.iconoffset), (box.top + self.iconoffset))
         end1 = ((box.right-self.iconoffset), (box.bottom-self.iconoffset))
 
@@ -65,7 +65,7 @@ class Board:
 
         boxId = 0
         for y in range(0,3):
-            for x in range(0, 3):            
+            for x in range(0, 3):
                 box = self.Box(
                     self.ui.pygame.Rect(
                         (boxWidth+borderSize)*x,
@@ -84,7 +84,7 @@ class Board:
         start1 = (0, height/3)
         end1 = (width, height/3)
         self.pygame.draw.line(self.gameArea, self.ui.color_darkgreen, start1, end1, 10)
-        
+
         start2 = (0, height*(2/3))
         end2 = (width, height*(2/3))
         self.pygame.draw.line(self.gameArea, self.ui.color_darkgreen, start2, end2, 10)
@@ -92,7 +92,7 @@ class Board:
         start3 = (height/3, 0)
         end3 = (height/3, width)
         self.pygame.draw.line(self.gameArea, self.ui.color_darkgreen, start3, end3, 10)
-        
+
         start4 = (height*(2/3), 0)
         end4 = ( height*(2/3), width)
         self.pygame.draw.line(self.gameArea, self.ui.color_darkgreen, start4, end4, 10)
@@ -105,11 +105,11 @@ class Board:
         print("Returning -1")
         return -1
 
-    
+
     class Box:
         def __init__(self, rect, id):
             self.rect = rect
             self.id = id
-        
+
         def checkMouseClick(self, mousepos):
             return self.rect.collidepoint(mousepos)

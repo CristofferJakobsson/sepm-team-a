@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module game_platform</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>game_platform</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/kasperramstrom/Development/school/sepm-team-a/src/game_platform/game_platform.py">/Users/kasperramstrom/Development/school/sepm-team-a/src/game_platform/game_platform.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="random.html">random</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="game_platform.html#Game">Game</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Game">class <strong>Game</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Game">Game</a>&nbsp;is&nbsp;the&nbsp;main&nbsp;class&nbsp;for&nbsp;the&nbsp;<a href="#Game">Game</a>&nbsp;Platform&nbsp;Interface<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Game-__init__"><strong>__init__</strong></a>(self, ui, player1, player2)</dt><dd><tt>Construct&nbsp;a&nbsp;new&nbsp;<a href="#Game">Game</a>&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Game">Game</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:param&nbsp;ui:&nbsp;The&nbsp;user&nbsp;interface&nbsp;for&nbsp;the&nbsp;<a href="#Game">Game</a>&nbsp;<a href="builtins.html#object">object</a><br>
+:param&nbsp;player1:&nbsp;A&nbsp;reference&nbsp;to&nbsp;Player&nbsp;1&nbsp;in&nbsp;the&nbsp;current&nbsp;<a href="#Game">Game</a><br>
+:param&nbsp;player2:&nbsp;A&nbsp;reference&nbsp;to&nbsp;Player&nbsp;2&nbsp;in&nbsp;the&nbsp;current&nbsp;<a href="#Game">Game</a><br>
+:return:&nbsp;returns&nbsp;nothing</tt></dd></dl>
+
+<dl><dt><a name="Game-checkWin"><strong>checkWin</strong></a>(self)</dt><dd><tt>Checks&nbsp;if&nbsp;a&nbsp;Player&nbsp;in&nbsp;the&nbsp;<a href="#Game">Game</a>&nbsp;reached&nbsp;winning&nbsp;conditions<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Game">Game</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:return:&nbsp;returns&nbsp;nothing</tt></dd></dl>
+
+<dl><dt><a name="Game-click"><strong>click</strong></a>(self, mousepos)</dt><dd><tt>Handles&nbsp;mouse&nbsp;clicks&nbsp;within&nbsp;the&nbsp;<a href="#Game">Game</a>&nbsp;coordinates<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;GameUI&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:param&nbsp;mousepos:&nbsp;The&nbsp;coordinates&nbsp;of&nbsp;where&nbsp;the&nbsp;mouse&nbsp;was&nbsp;clicked<br>
+:return:&nbsp;returns&nbsp;a&nbsp;boolean&nbsp;whether&nbsp;current&nbsp;Player&nbsp;has&nbsp;won</tt></dd></dl>
+
+<dl><dt><a name="Game-displayBoard"><strong>displayBoard</strong></a>(self, ui)</dt><dd><tt>Displays&nbsp;the&nbsp;<a href="#Game">Game</a>'s&nbsp;user&nbsp;interface&nbsp;<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Game">Game</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:param&nbsp;self:&nbsp;The&nbsp;user&nbsp;interface&nbsp;to&nbsp;display<br>
+:return:&nbsp;returns&nbsp;nothing</tt></dd></dl>
+
+<dl><dt><a name="Game-makemove"><strong>makemove</strong></a>(self, boxId)</dt><dd><tt>Performs&nbsp;a&nbsp;move&nbsp;for&nbsp;the&nbsp;current&nbsp;player.<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Game">Game</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:param&nbsp;boxId:&nbsp;The&nbsp;index&nbsp;of&nbsp;where&nbsp;the&nbsp;move&nbsp;will&nbsp;be&nbsp;done&nbsp;in&nbsp;the&nbsp;game&nbsp;state&nbsp;list<br>
+:return:&nbsp;returns&nbsp;nothing</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>
