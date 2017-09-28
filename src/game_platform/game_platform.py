@@ -34,6 +34,8 @@ class Game:
                 return 1
             if (self.gameState[state[0]] + self.gameState[state[1]] + self.gameState[state[2]]) == -3:
                 return -1
+        if len([i for i in range(9) if self.gameState[i] == 0]) == 0: 
+            return 0
         return None
 
 
