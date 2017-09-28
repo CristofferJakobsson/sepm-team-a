@@ -6,8 +6,6 @@ def adjustMousePos(mousepos, offset):
 class Board:
 
     def __init__(self, ui):
-        print("Hello thar")
-
         self.player1 = ui.playernames[0]
         self.player2 = ui.playernames[1]
         self.ui = ui
@@ -100,9 +98,7 @@ class Board:
     def findClickedBox(self, mousepos):
         for box in self.boxes:
             if box.checkMouseClick(adjustMousePos(mousepos, self.gameArea.get_abs_offset())):
-                print("Returning id")
                 return box.id
-        print("Returning -1")
         return -1
 
 

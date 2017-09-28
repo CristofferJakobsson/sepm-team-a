@@ -1,6 +1,6 @@
 from board import Board
 import random
-
+from player import Player, Human, Computer
 class Game:
     """
 	Game is the main class for the Game Platform Interface
@@ -63,6 +63,20 @@ class Game:
             return 0
         return None
 
+    def validmove(self, boxId):
+        return ((self.gameState[boxId] == 0) and (0 <= boxId <= 8))
+
+    def gameTic(self):
+        boxId = -1
+
+        if self.currentplayer == 1:
+            boxId = self.player1.play(self.gameState)
+        if self.currentplayer == -1:
+            boxId = self.player2.play(self.gameState)
+        
+        if self.validmove(boxId):
+            self.makemove(boxId)
+
 
     def makemove(self,boxId):
         """
@@ -83,11 +97,14 @@ class Game:
 		:param self: A reference to the GameUI object itself
 		:param mousepos: The coordinates of where the mouse was clicked
 		:return: returns a boolean whether current Player has won
-		"""
-        boxId = self.board.findClickedBox(mousepos)
-        if self.gameState[boxId] != 0:
-            return
-
-        self.makemove(boxId)
-
-        return self.checkWin()
+		""" 
+        if self.currentplayer == 1:
+            if isinstance(self.player1, Computer):
+                return
+            else:
+                self.player1.move = self.board.findClickedBox(mousepos)
+        if self.currentplayer == -1:
+            if isinstance(self.player2, Computer):
+                return
+            else:
+                self.player2.move = self.board.findClickedBox(mousepos)

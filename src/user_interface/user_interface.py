@@ -160,18 +160,14 @@ class GameUI:
 				if(pygame.mouse.get_pressed()[0]):
 					if(hasattr(self, 'game')):
 						if(self.game):
-							winstate = self.game.click(pygame.mouse.get_pos())
-							if  winstate == 1:
-								print("Player 1 Won")
-							if  winstate == 2:
-								print("Player 2 Won")
-							if winstate == None:
-								print("Noone has won yet")
-							
+							self.game.click(pygame.mouse.get_pos())							
 					self.checkButtonClick(pygame.mouse.get_pos())
+			
+		if(hasattr(self, 'game')):
+			if(self.game):
+				self.game.gameTic()
 
 		pygame.display.flip()
-		
 
 	def displayMainMenu(self):
 		"""
@@ -270,7 +266,7 @@ class GameUI:
 			))
 		)
 		p1 = Human(player1)
-		p2 = Human(player2)
+		p2 = Computer(player2, 2)
 		self.game = Game(self, p1, p2)
 
 	def displaySingelPlayer(self):

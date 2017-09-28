@@ -1,4 +1,6 @@
 import abc
+import random
+import math
 
 class Player(metaclass=abc.ABCMeta):
 	"""
@@ -39,6 +41,7 @@ class Human(Player):
 		"""
 		self.name = name
 		self.human = True
+		self.move = -1
 
 	def isHuman(self):
 		"""
@@ -50,7 +53,9 @@ class Human(Player):
 		return self.human
 
 	def play(self, state):
-		pass
+		tentativeMove = self.move
+		self.move = -1
+		return tentativeMove
 
 class Computer(Player):
 	"""
@@ -79,4 +84,4 @@ class Computer(Player):
 		return self.human
 
 	def play(self, state):
-		pass
+		return math.floor(random.random()*9)
