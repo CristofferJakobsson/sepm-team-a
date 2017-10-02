@@ -19,7 +19,7 @@ class Tournament:
 		for n in range(len(players)):
 			if len(players[n]) > 0:
 				self.players.append(players[n])
-		# random.shuffle(self.players)
+		random.shuffle(self.players)
 
 		# check we have an even numer of players
 		if len(self.players) % 2 != 0:
