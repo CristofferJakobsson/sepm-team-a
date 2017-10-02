@@ -1,24 +1,27 @@
 import random
+from sys import stdout
 
 class game_engine:
 
 	def __init__(self, level):
 		self.level = level
 
-	def makemove(self,board, currentplayer): 
+	def makemove(self,board,currentplayer): 
 		rm = self.randommove(board, currentplayer)
 		mm = self.hardmove(board, currentplayer) 
 
 		if self.level == "hard":
-			return mm
+			q = 1
 		elif self.level == "normal":
-			q = 75
+			q = 0.75
 		else:
-			q = 30
+			q = 0.30
 
-		if random.randint(0, 100) < q:
+		if random.uniform(0, 1) > q:
+			print("Making random move")
 			return rm
 		else:
+			print("Making hard move")
 			return mm
 
 	def hardmove(self, board, currentplayer):
@@ -35,10 +38,11 @@ class game_engine:
 			val = self.minmax(newboard, nextplayer, -2, 2)
 			if val > a: 
 				a = val
-				choises = [move]
+				choises = [i]
 			elif val == a:
-				choises.append(move)
-		return random.choises(choises)
+				choises.append(i)
+		random.shuffle(choises)
+		return choises.pop()
 
 
 	def randommove(self,board,currentplayer):
@@ -60,7 +64,7 @@ class game_engine:
 		for i in possible_moves:
 			newboard = board[:]
 			newboard[i] = currentplayer
-			p = minmax(newboard, nextplayer, alpha, beta)
+			val = self.minmax(newboard, nextplayer, alpha, beta)
 			if currentplayer == 1:
 				if val > alpha:
 					alpha = val
@@ -97,48 +101,3 @@ class game_engine:
 
 
 
-
-def move(board, i, player):
-	board[i] = player
-	return board
-
-
-
-
-
-
-easy = game_engine("easy")
-normal = game_engine("normal")
-hard = game_engine("hard")
-
-# print("Easy:")
-# print(easy.available_moves(state))
-# print("easy makes move: " + str(easy.makemove(state, 1)))
-
-
-# print(normal.available_moves(state))
-# print(hard.available_moves(state))
-
-currentplayer = 1
-state = [0,0,0,0,0,0,0,0,0]
-while len(easy.available_moves(state)) != 0:
-	state = move(state, easy.makemove(state, currentplayer), currentplayer)
-	if easy.winning(state, currentplayer):
-		print("Player " + str(currentplayer) + " won!")
-		break
-	currentplayer = currentplayer * -1
-	print (state)
-
-
-
-# state = [0,0,0,0,0,0,0,0,0]
-# while len(normal.available_moves(state)) != 0:
-# 	state = move(state, normal.makemove(state, currentplayer), currentplayer)
-# 	currentplayer = currentplayer * -1
-# 	print (state)
-
-# state = [0,0,0,0,0,0,0,0,0]
-# while len(hard.available_moves(state)) != 0:
-# 	state = move(state, hard.makemove(state, currentplayer), currentplayer)
-# 	currentplayer = currentplayer * -1
-# 	print (state)
