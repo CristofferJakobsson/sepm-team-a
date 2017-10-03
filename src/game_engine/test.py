@@ -2,7 +2,8 @@ from game_engine import game_engine
 
 
 def move(board, i, player):
-	board[i] = player
+	if board[i] == 0:
+		board[i] = player
 	return board
 
 def rep(v):
@@ -15,7 +16,7 @@ def rep(v):
 
 
 def draw_line(one, two, three):
-	print(" " + rep(one) + " | " + rep(two) + "  | " + rep(three))
+	print(" " + rep(one) + " | " + rep(two) + " | " + rep(three))
 
 def draw_board(board):
 	print ("")
@@ -30,47 +31,30 @@ def draw_board(board):
 
 
 
-easy = game_engine("easy")
-normal = game_engine("normal")
 hard = game_engine("hard")
 
-# print("Easy:")
-# print(easy.available_moves(state))
-# print("easy makes move: " + str(easy.makemove(state, 1)))
 
-
-# print(normal.available_moves(state))
-# print(hard.available_moves(state))
-
-currentplayer = 1
-state = [0,0,0,0,0,0,0,0,0]
-while len(easy.available_moves(state)) != 0:
-	state = move(state, easy.makemove(state, currentplayer), currentplayer)
-	currentplayer = currentplayer * -1
-	draw_board(state)
-	if easy.winning(state, currentplayer):
-		print("Player " + str(currentplayer) + " won!")
-		break
-
-
-
-
-currentplayer = 1
-state = [0,0,0,0,0,0,0,0,0]
-while len(normal.available_moves(state)) != 0:
-	state = move(state, normal.makemove(state, currentplayer), currentplayer)
-	currentplayer = currentplayer * -1
-	draw_board(state)
-	if normal.winning(state, currentplayer):
-		print("Player " + str(currentplayer) + " won!")
-		break
+maxdepth = 9
+depth = 0
 
 currentplayer = 1
 state = [0,0,0,0,0,0,0,0,0]
 while len(hard.available_moves(state)) != 0:
-	state = move(state, hard.makemove(state, currentplayer), currentplayer)
-	currentplayer = currentplayer * -1
+	
+	mm = hard.makemove(state, currentplayer)
+	print("player " + str(currentplayer) + " got: " + str(mm))
+	state = move(state, mm, currentplayer)
 	draw_board(state)
+	
+	
 	if hard.winning(state, currentplayer):
 		print("Player " + str(currentplayer) + " won!")
 		break
+	currentplayer = currentplayer * -1
+	print("")
+
+	if depth == maxdepth:
+		break
+
+	depth = depth +1
+

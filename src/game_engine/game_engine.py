@@ -35,10 +35,8 @@ class game_engine:
 			q = 0.30
 
 		if random.uniform(0, 1) > q:
-			print("Making random move")
 			return rm
 		else:
-			print("Making hard move")
 			return mm
 
 	def hardmove(self, board, currentplayer):
@@ -50,24 +48,9 @@ class game_engine:
 		:param currentplayer: A reference to the Computer object whose move is to be decided
 		:return: returns the move for the Player to make
 		"""
-		avail = self.available_moves(board)
-		nextplayer = currentplayer * -1
-		choises = []
-		a = -2
-		if len(avail) == 9:
-			return 4
 
-		for i in avail:
-			newboard = board[:]
-			newboard[i] = currentplayer
-			val = self.minmax(newboard, nextplayer, -2, 2)
-			if val > a:
-				a = val
-				choises = [i]
-			elif val == a:
-				choises.append(i)
-		random.shuffle(choises)
-		return choises.pop()
+		player, move = self.minmax(board, currentplayer, currentplayer)
+		return move
 
 
 	def randommove(self,board,currentplayer):
@@ -83,46 +66,44 @@ class game_engine:
 		random.shuffle(temp)
 		return temp[0]
 
-	def minmax(self, board, currentplayer, alpha, beta):
+	def minmax(self, board, currentplayer, max_player):
 		"""
 		Minimax decision rule to decide the move for the given Player by minimizing the loss for the worst case scenario move.
 
 		:param self: A reference to the game_engine object itself
 		:param board: A reference to the current game board
 		:param currentplayer: A reference to the Computer object whose move is to be decided
-		:param alpha: TODO
-		:param beta: TODO
+		:param max_player: The player we want to win.
 		:return: TODO
 		"""
-		possible_moves = self.available_moves(board)
-		nextplayer = currentplayer * -1
+		return self.nextMove(board, currentplayer, max_player)
 
-		if len(possible_moves) == 0:
-			return 0
-		elif self.winning(board, currentplayer):
-			return currentplayer
-		elif self.winning(board, nextplayer):
-			return nextplayer
-
-		for i in possible_moves:
-			newboard = board[:]
-			newboard[i] = currentplayer
-			val = self.minmax(newboard, nextplayer, alpha, beta)
-			if currentplayer == 1:
-				if val > alpha:
-					alpha = val
-				if alpha >= beta:
-					return beta
-			else:
-				if val < beta:
-					beta = val
-				if beta <= alpha:
-					return alpha
-
-		if currentplayer == 1:
-			return alpha
+	def nextMove(self, board, currentplayer, max_player):
+		if self.game_over(board):
+			if self.winning(board, max_player): return 1,1
+			elif self.winning(board, max_player*-1): return -1,-1
+			else: return 0,0
 		else:
-			return beta
+			avail = self.available_moves(board)
+			c = len(avail)
+			if  c == 9: return 1,4
+			
+			nextplayer = currentplayer * -1
+			newboard = []
+
+			for i in avail:
+				board[i] = currentplayer
+				ret,move = self.nextMove(board, nextplayer, max_player)
+				newboard.append(ret)
+				board[i] = 0
+
+			if currentplayer == max_player:
+				maxele = max(newboard)
+				return maxele,avail[newboard.index(maxele)]
+			else:
+				minele = min(newboard)
+				return minele,avail[newboard.index(minele)]
+
 
 	def available_moves(self,board):
 		"""
@@ -156,3 +137,13 @@ class game_engine:
 				return True
 
 		return False
+
+	def game_over(self,board):
+		if len(self.available_moves(board)) == 0:
+			return True
+		elif self.winning(board, 1):
+			return True
+		elif self.winning(board, -1):
+			return True
+		else:
+			return False
