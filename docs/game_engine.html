@@ -54,6 +54,13 @@
 :param&nbsp;board:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;current&nbsp;game&nbsp;board<br>
 :return:&nbsp;returns&nbsp;a&nbsp;list&nbsp;containing&nbsp;current&nbsp;possible&nbsp;moves</tt></dd></dl>
 
+<dl><dt><a name="game_engine-game_over"><strong>game_over</strong></a>(self, board)</dt><dd><tt>Checks&nbsp;if&nbsp;the&nbsp;game&nbsp;is&nbsp;over.<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#game_engine">game_engine</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:param&nbsp;board:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;current&nbsp;game&nbsp;board<br>
+:param&nbsp;player:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;current&nbsp;game&nbsp;board<br>
+:return:&nbsp;returns&nbsp;a&nbsp;boolean&nbsp;whether&nbsp;the&nbsp;game&nbsp;is&nbsp;over&nbsp;or&nbsp;not</tt></dd></dl>
+
 <dl><dt><a name="game_engine-hardmove"><strong>hardmove</strong></a>(self, board, currentplayer)</dt><dd><tt>The&nbsp;Best&nbsp;move&nbsp;for&nbsp;the&nbsp;given&nbsp;Player&nbsp;(Computer)&nbsp;to&nbsp;make&nbsp;among&nbsp;possible&nbsp;moves.<br>
 &nbsp;<br>
 :param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#game_engine">game_engine</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
@@ -68,14 +75,21 @@
 :param&nbsp;currentplayer:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;Computer&nbsp;<a href="builtins.html#object">object</a>&nbsp;whose&nbsp;move&nbsp;is&nbsp;to&nbsp;be&nbsp;decided<br>
 :return:&nbsp;returns&nbsp;the&nbsp;move&nbsp;for&nbsp;the&nbsp;Player&nbsp;to&nbsp;make</tt></dd></dl>
 
-<dl><dt><a name="game_engine-minmax"><strong>minmax</strong></a>(self, board, currentplayer, alpha, beta)</dt><dd><tt>Minimax&nbsp;decision&nbsp;rule&nbsp;to&nbsp;decide&nbsp;the&nbsp;move&nbsp;for&nbsp;the&nbsp;given&nbsp;Player&nbsp;by&nbsp;minimizing&nbsp;the&nbsp;loss&nbsp;for&nbsp;the&nbsp;worst&nbsp;case&nbsp;scenario&nbsp;move.<br>
+<dl><dt><a name="game_engine-minmax"><strong>minmax</strong></a>(self, board, currentplayer, max_player)</dt><dd><tt>Minimax&nbsp;decision&nbsp;rule&nbsp;to&nbsp;decide&nbsp;the&nbsp;move&nbsp;for&nbsp;the&nbsp;given&nbsp;Player&nbsp;by&nbsp;minimizing&nbsp;the&nbsp;loss&nbsp;for&nbsp;the&nbsp;worst&nbsp;case&nbsp;scenario&nbsp;move.<br>
 &nbsp;<br>
 :param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#game_engine">game_engine</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
 :param&nbsp;board:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;current&nbsp;game&nbsp;board<br>
 :param&nbsp;currentplayer:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;Computer&nbsp;<a href="builtins.html#object">object</a>&nbsp;whose&nbsp;move&nbsp;is&nbsp;to&nbsp;be&nbsp;decided<br>
-:param&nbsp;alpha:&nbsp;TODO<br>
-:param&nbsp;beta:&nbsp;TODO<br>
-:return:&nbsp;TODO</tt></dd></dl>
+:param&nbsp;max_player:&nbsp;The&nbsp;player&nbsp;we&nbsp;want&nbsp;to&nbsp;win.<br>
+:return:&nbsp;the&nbsp;Player&nbsp;and&nbsp;the&nbsp;best&nbsp;move&nbsp;for&nbsp;that&nbsp;Player</tt></dd></dl>
+
+<dl><dt><a name="game_engine-nextMove"><strong>nextMove</strong></a>(self, board, currentplayer, max_player)</dt><dd><tt>Next&nbsp;move&nbsp;decided&nbsp;by&nbsp;minimax&nbsp;decision&nbsp;rule&nbsp;to&nbsp;decide&nbsp;the&nbsp;move&nbsp;for&nbsp;the&nbsp;given&nbsp;Player&nbsp;by&nbsp;minimizing&nbsp;the&nbsp;loss&nbsp;for&nbsp;the&nbsp;worst&nbsp;case&nbsp;scenario&nbsp;move.<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#game_engine">game_engine</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:param&nbsp;board:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;current&nbsp;game&nbsp;board<br>
+:param&nbsp;currentplayer:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;Computer&nbsp;<a href="builtins.html#object">object</a>&nbsp;whose&nbsp;move&nbsp;is&nbsp;to&nbsp;be&nbsp;decided<br>
+:param&nbsp;max_player:&nbsp;The&nbsp;player&nbsp;we&nbsp;want&nbsp;to&nbsp;win.<br>
+:return:&nbsp;the&nbsp;Player&nbsp;and&nbsp;the&nbsp;best&nbsp;move&nbsp;for&nbsp;that&nbsp;Player</tt></dd></dl>
 
 <dl><dt><a name="game_engine-randommove"><strong>randommove</strong></a>(self, board, currentplayer)</dt><dd><tt>A&nbsp;random&nbsp;move,&nbsp;among&nbsp;possible&nbsp;moves&nbsp;for&nbsp;the&nbsp;Player&nbsp;(Computer)&nbsp;to&nbsp;make.<br>
 &nbsp;<br>
@@ -101,15 +115,10 @@ Data descriptors defined here:<br>
 </dl>
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
-<tr bgcolor="#eeaa77">
+<tr bgcolor="#55aa55">
 <td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
-<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><dl><dt><a name="-move"><strong>move</strong></a>(board, i, player)</dt><dd><tt>Performs&nbsp;a&nbsp;move&nbsp;for&nbsp;given&nbsp;Player.<br>
-&nbsp;<br>
-:param&nbsp;board:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;current&nbsp;game&nbsp;board<br>
-:param&nbsp;board:&nbsp;The&nbsp;index&nbsp;in&nbsp;the&nbsp;board&nbsp;list&nbsp;where&nbsp;to&nbsp;make&nbsp;the&nbsp;move.<br>
-:return:&nbsp;returns&nbsp;the&nbsp;board&nbsp;with&nbsp;the&nbsp;given&nbsp;Player&nbsp;move</tt></dd></dl>
-</td></tr></table>
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>stdout</strong> = &lt;_io.TextIOWrapper name='&lt;stdout&gt;' mode='w' encoding='UTF-8'&gt;</td></tr></table>
 </body></html>

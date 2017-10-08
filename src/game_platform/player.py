@@ -53,6 +53,13 @@ class Human(Player):
 		return self.human
 
 	def play(self, state):
+		"""
+		Performs a given play
+
+		:param self: A reference to the Human object itself
+		:param state: A reference to the current game state
+		:return: returns an integer representing an index in the game board
+		"""
 		tentativeMove = self.move
 		self.move = -1
 		return tentativeMove
@@ -84,4 +91,11 @@ class Computer(Player):
 		return self.human
 
 	def play(self, state):
+		"""
+		Performs a given play
+
+		:param self: A reference to the Human object itself
+		:param state: A reference to the current game state
+		:return: returns a random integer representing an index in the game board
+		"""
 		return math.floor(random.random()*9)

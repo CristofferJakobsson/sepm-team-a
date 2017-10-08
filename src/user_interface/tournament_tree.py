@@ -9,6 +9,7 @@ class Tournament:
 		Construct a new Tournament object.
 
 		:param self: A reference to the Tournament object itself
+		:param players: a list containing names of players in the tournament
 		:return: returns nothing
 		"""
 		self.players = []
@@ -70,6 +71,7 @@ class Tournament:
 		Appends the current winners to a list belonging to the Tournament object which contains the players advancing to the next round.
 
 		:param self: A reference to the Tournament object itself
+		:param playername: Name of the winning player
 		:return: returns nothing
 		"""
 		self.ontothenext.append(playername)

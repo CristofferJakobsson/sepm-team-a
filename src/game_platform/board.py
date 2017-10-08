@@ -12,6 +12,7 @@ class Board:
 		Construct a new Board object.
 
 		:param self: A reference to the Board object itself
+		:param ui: A reference to the GameUI object
 		:return: returns nothing
 		"""
         self.player1 = ui.playernames[0]
@@ -170,6 +171,7 @@ class Board:
             Checks if a given mouse click was within the Box's coordinates
 
             :param self: A reference to the Box object itself
+            :param mousepos: The position of where the mouse was when clicked
             :return: returns a boolean condition whether the mouse click's coordinates was within the Box coordinates
             """
             return self.rect.collidepoint(mousepos)
