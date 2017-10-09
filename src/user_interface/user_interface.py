@@ -336,8 +336,6 @@ class GameUI:
 		:return: returns nothing
 		"""
 		self.mainArea.fill(self.color_background)
-		buttonHalfWidth = 150
-		buttonHeight = 50
 		self.visiblebuttons = []
 		self.playernames = []
 		numplayers = 0
@@ -350,13 +348,20 @@ class GameUI:
 
 		for n in range(numplayers):
 			self.playernames.append(self.askfornames.ask("Player " + str(n+1), self.playernames))
+		
+		self.tournament = Tournament(self, self.playernames)
 
+		self.displayCurrentTournament()
 
+		
+
+	def displayCurrentTournament(self):
+		buttonHalfWidth = 150
+		buttonHeight = 50
 		self.mainArea.fill(self.color_background)
 		
-		tournament = Tournament(self, self.playernames)
-		tournament.drawBracket()
-
+		
+		self.tournament.drawBracket()
 
 
 		self.visiblebuttons.append(
@@ -382,10 +387,12 @@ class GameUI:
 				buttonHalfWidth*2,
 				buttonHeight,
 				"Start Tournament",
-				self.displayMainMenu
+				self.displayTournamentGame
 			)
 		)
 
+	def displayTournamentGame(self): 
+		pass
 
 ui = GameUI()
 while 1:

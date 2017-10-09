@@ -106,9 +106,18 @@ class Tournament:
 		print(match.player1 +" "  + match.player2 + " " + str(x) + " " + str(y))
 		width = 200
 		height = 40
+		match.setWinner(1)
+
+		player1color = self.ui.color_menu
+		player2color = self.ui.color_menu
+		if match.winner == 1:
+			player2color = self.ui.color_lighttext
+		elif match.winner == 2:
+			player1color = self.ui.color_lighttext
+
 		self.ui.visiblebuttons.append(
 			Button(self.ui.pygame, self.ui.mainArea).create(
-				self.ui.color_menu,
+				player1color,
 				self.ui.color_darktext,
 				self.ui.color_border,
 				x,
@@ -122,7 +131,7 @@ class Tournament:
 
 		self.ui.visiblebuttons.append(
 			Button(self.ui.pygame, self.ui.mainArea).create(
-				self.ui.color_menu,
+				player2color,
 				self.ui.color_darktext,
 				self.ui.color_border,
 				x,
@@ -133,6 +142,7 @@ class Tournament:
 				self.drawBracket
 			)
 		)
+
 
 
 	def makeMatches(self):
