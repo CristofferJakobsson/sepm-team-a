@@ -171,6 +171,24 @@ class Board:
         txt = font.render("WINNER", True, color)
         self.gameArea.blit(txt, coords)
 
+    def drawDrawBoard(self):
+        self.gameArea.fill(self.ui.color_background)
+
+        coords1 = 110, 170
+        coords2 = 110, 220
+        coords3 = 110, 270
+        coords4 = 110, 320
+        color = (0,0,0)
+        font = self.pygame.font.SysFont("sans", 52)
+        row1 = font.render("It's", True, color)
+        row2 = font.render("A", True, color)
+        row3 = font.render("Goddamn", True, color)
+        row4 = font.render("Draw!!", True, color)
+        self.gameArea.blit(row1, coords1)
+        self.gameArea.blit(row2, coords2)
+        self.gameArea.blit(row3, coords3)
+        self.gameArea.blit(row4, coords4)
+
 
     class Box:
         """

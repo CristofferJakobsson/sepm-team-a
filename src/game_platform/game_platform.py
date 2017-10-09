@@ -5,7 +5,7 @@ class Game:
     """
 	Game is the main class for the Game Platform Interface
 	"""
-    def __init__(self, ui, player1, player2):
+    def __init__(self, ui, player1, player2, istournament=False):
         """
 		Construct a new Game object.
 
@@ -17,6 +17,7 @@ class Game:
 		"""
         self.player1 = player1
         self.player2 = player2
+        self.istournament = istournament
 
         self.gameState =   [0, 0, 0,
                             0, 0, 0,
@@ -49,6 +50,7 @@ class Game:
 
     def handleDraw(self):
         print("Its a draaaw")
+        self.board.drawDrawBoard()
         self.board = None
         self.ui.game = None
 
@@ -67,13 +69,20 @@ class Game:
                      (2, 5, 8),
                      (0, 4, 8),
                      (2, 4, 6)]
+        win = False
         for state in winstates:
             if (self.gameState[state[0]] + self.gameState[state[1]] + self.gameState[state[2]]) == 3:
                 self.handleWin(1)
-            if (self.gameState[state[0]] + self.gameState[state[1]] + self.gameState[state[2]]) == -3:
+                print("Player 1 won")
+                win = True
+            elif (self.gameState[state[0]] + self.gameState[state[1]] + self.gameState[state[2]]) == -3:
                 self.handleWin(-1)
-        if len([i for i in range(9) if self.gameState[i] == 0]) == 0: 
-            self.handleDraw()
+                print("Player 2 won")
+                win = True
+        
+        if len([i for i in range(9) if self.gameState[i] == 0]) == 0 and not win: 
+                print("Draw yo")
+                self.handleDraw()
         return None
 
     def validmove(self, boxId):

@@ -105,7 +105,16 @@ class GameUI:
 		title = centeredtext("Tic Tac Toe", 0,0, 1280, 75, pygame, 100, self.color_lighttext)
 		title.draw(self.secondaryArea, self.color_menu)
 
-		if len(player1) != 0:
+		name1 = player1
+		name2 = player2
+
+		if isinstance(player1, Player):
+			name1 = player1.name
+		if isinstance(player2, Player):
+			name2 = player2.name
+
+
+		if len(name1) != 0:
 			(Button(pygame, self.secondaryArea).create(
 				self.color_menu,
 				self.color_darktext,
@@ -114,14 +123,14 @@ class GameUI:
 				100,
 				buttonHalfWidth*2,
 				buttonHeight,
-				"X  " + player1,
+				"X  " + name1,
 				self.displaySingelPlayer
 			))
 			if playing == 1:
 				box = pygame.Rect(100,150,400,5)
 				self.secondaryArea.fill(self.color_background, box)
 
-		if len(player2) != 0:
+		if len(name2) != 0:
 			(Button(pygame, self.secondaryArea).create(
 				self.color_menu,
 				self.color_darktext,
@@ -130,7 +139,7 @@ class GameUI:
 				100,
 				buttonHalfWidth*2,
 				buttonHeight,
-				"O  " + player2,
+				"O  " + name2,
 				self.displayTwoPlayer
 			))
 			if playing == -1:
@@ -270,9 +279,7 @@ class GameUI:
 				self.displayMainMenu
 			))
 		)
-		p1 = Human(player1)
-		p2 = Computer(player2, 2)
-		self.game = Game(self, p1, p2)
+		self.game = Game(self, player1, player2)
 
 	def displaySingelPlayer(self):
 		"""
@@ -289,7 +296,15 @@ class GameUI:
 
 		self.playernames.append(self.askfornames.ask("Player 1", self.playernames))
 		self.playernames.append("Computer")
-		self.displayGame(self.playernames[0], self.playernames[1])
+		computerdifficulty = -1
+		while(computerdifficulty not in [1, 2, 3]):
+			try:
+				computerdifficulty = int(self.askfornames.ask("CPU Dificculty"))
+			except ValueError:
+				pass
+		player1 = Human(self.playernames[0])
+		player2 = Computer(self.playernames[1], 2)
+		self.displayGame(player1, player2)
 
 	def displayTwoPlayer(self):
 		"""
@@ -305,7 +320,12 @@ class GameUI:
 		self.playernames = []
 		self.playernames.append(self.askfornames.ask("Player 1", self.playernames))
 		self.playernames.append(self.askfornames.ask("Player 2", self.playernames))
-		self.displayGame(self.playernames[0], self.playernames[1])
+
+		player1 = Human(self.playernames[0])
+		player2 = Human(self.playernames[1])
+		
+
+		self.displayGame(player1, player2)
 
 	def displayCreateTournament(self):
 		"""
