@@ -4,11 +4,14 @@ from button import Button
 from centeredtext import centeredtext
 #from board import Board
 from player_names import Playernames
+from tournament_tree import Tournament
 
 import sys
 sys.path.insert(0, '../game_platform')
 from game_platform import Game
 from player import Player, Human, Computer
+
+sys.path.insert(0, '../game_engine')
 
 
 
@@ -184,7 +187,7 @@ class GameUI:
 		buttonHeight = 50
 
 		self.renderTop("","",1)
-		self.visiblebuttons = (
+		self.visiblebuttons = [
 			(Button(pygame, self.mainArea).create(
 				self.color_menu,
 				self.color_darktext,
@@ -229,7 +232,7 @@ class GameUI:
 				"Exit",
 				sys.exit
 			))
-		)
+		]
 
 	def displayGame(self, player1, player2):
 		"""
@@ -315,44 +318,21 @@ class GameUI:
 		:return: returns nothing
 		"""
 		self.mainArea.fill(self.color_background)
+		self.visiblebuttons = []
 		buttonHalfWidth = 150
 		buttonHeight = 50
 
-		self.playernames = []
+		self.playernames = ["Player1", "Player2", "Player3", "Player4", "Player5", "Player6", "Player7", "Player8"]
 
-		for n in range(8):
-			self.playernames.append(self.askfornames.ask("Player " + str(n+1)))
+		#for n in range(8):
+		#	self.playernames.append(self.askfornames.ask("Player " + str(n+1)))
+		
+		
+		
+		tournament = Tournament(self, self.playernames)
+		tournament.drawBracket()
 
-		self.mainArea.fill(self.color_background)
 
-		self.visiblebuttons = []
-
-		x = 20
-		y = 20
-
-		for n in range(8):
-			y = y + 80
-
-			if n % 2 == 0:
-				x = 100
-			else:
-				y = y - 80
-				x = 825
-
-			if len(self.playernames[n]) != 0:
-				self.visiblebuttons.append(
-					Button(pygame, self.mainArea).create(
-						self.color_menu,
-						self.color_darktext,
-						self.color_border,
-						x,
-						y,
-						buttonHalfWidth*2.5,
-						buttonHeight,
-						self.playernames[n],
-						self.displayMainMenu
-					)
-				)
 
 		self.visiblebuttons.append(
 			Button(pygame, self.mainArea).create(
