@@ -1,6 +1,11 @@
 import random
 from tournament_game import TournamentGame
 from button import Button
+import sys
+
+sys.path.insert(0, '../game_platform')
+from player import Player, Human, Computer
+
 
 class Tournament:
 	"""
@@ -28,9 +33,33 @@ class Tournament:
 		# Check names are not blank
 		for n in range(len(players)):
 			if len(players[n]) > 0:
-				self.players.append(players[n])
-		random.shuffle(self.players)
+				self.players.append(Human(players[n]))
+		
 
+
+		c = 1
+		while 1:
+			if len(self.players) % 4 == 0:
+				break
+
+			level = 0
+
+			while(level not in [1,2,3]):
+				try:
+					level = int(self.ui.askfornames.ask("AI level: (1, 2, 3)"))
+				except ValueError:
+					pass
+
+			if level == 1:
+				l = "easy"
+			elif level == 2:
+				l = "normal"
+			else:
+				l = "hard"
+			self.players.append(Computer("Computer " + str(c), l))
+			c = c + 1
+		
+		random.shuffle(self.players)
 
 		self.makeMatches()
 
@@ -56,8 +85,8 @@ class Tournament:
 
 	def getNextMatch(self): 
 		# if more then two players create a new match.
-		if len(self.players) >= 2:
-			self.makeMatches()
+#		if len(self.players) >= 2:
+#			self.makeMatches()
 		
 		mem = self.currentGame
 		
@@ -66,6 +95,16 @@ class Tournament:
 			return 2,self.matches[mem]
 		else:
 			return 1,self.players 
+
+
+	def getCurrentMatch(self):
+#		if len(self.players) >= 2:
+#			self.makeMatches()
+		mem = self.currentGame-1
+		if self.matches[mem]:
+			return 2,self.matches[mem]
+		else:
+			return 1, self.players
 
 
 	def drawBracket(self):
@@ -103,10 +142,8 @@ class Tournament:
 
 
 	def drawMatch(self, match, x, y):
-		print(match.player1 +" "  + match.player2 + " " + str(x) + " " + str(y))
 		width = 200
 		height = 40
-		match.setWinner(1)
 
 		player1color = self.ui.color_menu
 		player2color = self.ui.color_menu
@@ -124,7 +161,7 @@ class Tournament:
 				y,
 				width,
 				height,
-				match.player1,
+				match.player1.name,
 				self.drawBracket
 			)
 		)
@@ -138,7 +175,7 @@ class Tournament:
 				y+height+5,
 				width,
 				height,
-				match.player2,
+				match.player2.name,
 				self.drawBracket
 			)
 		)
@@ -155,7 +192,7 @@ class Tournament:
 		for n in range(int(len(self.players) / 2)):
 			self.matches.append(TournamentGame(self.players[n], self.players[len(self.players)-n-1]))
 
-	def setWinner(self, playername):
+	def setWinner(self, player):
 		"""
 		Appends the current winners to a list belonging to the Tournament object which contains the players advancing to the next round.
 
@@ -163,13 +200,8 @@ class Tournament:
 		:param playername: Name of the winning player
 		:return: returns nothing
 		"""
-		self.ontothenext.append(playername)
-		if len(self.matches) == 1:
-			self.matches = []
-		for n in range(len(self.matches)-1):
-			if self.matches[n][0] == playername:
-				del self.matches[n]
-			if self.matches[n][1] == playername:
-				del self.matches[n]
+
+		self.matches[self.currentGame-1].setWinner(player)
+		
 
 

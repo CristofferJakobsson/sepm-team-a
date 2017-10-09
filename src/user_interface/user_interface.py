@@ -194,7 +194,7 @@ class GameUI:
 		buttonHeight = 50
 
 		self.renderTop("","",1)
-		self.visiblebuttons = (
+		self.visiblebuttons = [
 			(Button(pygame, self.mainArea).create(
 				self.color_menu,
 				self.color_darktext,
@@ -239,9 +239,9 @@ class GameUI:
 				"Exit",
 				sys.exit
 			))
-		)
+		]
 
-	def displayGame(self, player1, player2):
+	def displayGame(self, player1, player2, tournamentgame = None):
 		"""
 		Displays a game-view on the screen.
 
@@ -256,7 +256,7 @@ class GameUI:
 
 		self.renderTop(player1, player2, 1)
 
-		self.visiblebuttons = (
+		self.visiblebuttons = [
 			(Button(pygame, self.mainArea).create(
 				self.color_menu,
 				self.color_darktext,
@@ -279,8 +279,11 @@ class GameUI:
 				"Forfit",
 				self.displayMainMenu
 			))
-		)
-		self.game = Game(self, player1, player2)
+		]
+		if tournamentgame:
+			self.game = Game(self, player1, player2, True, tournamentgame)
+		else: 
+			self.game = Game(self, player1, player2)
 
 	def displaySingelPlayer(self):
 		"""
@@ -324,7 +327,6 @@ class GameUI:
 
 		player1 = Human(self.playernames[0])
 		player2 = Human(self.playernames[1])
-		
 
 		self.displayGame(player1, player2)
 
@@ -340,9 +342,9 @@ class GameUI:
 		self.playernames = []
 		numplayers = 0
 
-		while(numplayers not in range(1,8)):
+		while(numplayers not in range(2,9)):
 			try:
-				numplayers = int(self.askfornames.ask("Number of players: (1-8)"))
+				numplayers = int(self.askfornames.ask("Number of players: (2-8)"))
 			except ValueError:
 				pass
 
@@ -360,9 +362,7 @@ class GameUI:
 		buttonHeight = 50
 		self.mainArea.fill(self.color_background)
 		
-		
 		self.tournament.drawBracket()
-
 
 		self.visiblebuttons.append(
 			Button(pygame, self.mainArea).create(
@@ -386,10 +386,12 @@ class GameUI:
 				450,
 				buttonHalfWidth*2,
 				buttonHeight,
-				"Start Tournament",
+				"Play",
 				self.displayTournamentGame
 			)
 		)
+		print(str(len(self.tournament.players)))
+		print(str(len(self.tournament.matches)))
 
 	def displayTournamentGame(self, replaygame=False): 
 		if replaygame: 
@@ -397,7 +399,7 @@ class GameUI:
 		else: 
 			tournamentGame = self.tournament.getNextMatch()[1]
 		
-		self.game = Game(self.ui, tournamentGame.player1, tournamentGame.player2, True)
+		self.displayGame(tournamentGame.player1, tournamentGame.player2, tournamentGame)
 
 ui = GameUI()
 while 1:

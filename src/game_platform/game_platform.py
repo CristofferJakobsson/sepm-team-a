@@ -1,5 +1,5 @@
 from board import Board
-import random
+import random, math
 from player import Player, Human, Computer
 class Game:
     """
@@ -39,6 +39,7 @@ class Game:
 		:param ui: The user interface to display
 		:return: returns nothing
 		"""
+        self.ui.mainArea.fill(self.ui.color_background)
         self.board = Board(ui)
 
     def handleWin(self, winningplayer):
@@ -49,10 +50,10 @@ class Game:
         self.board = None
         self.ui.game = None
         if self.istournament:
-            if winningplayer == player1:
-                tournamentgame.winner = 1
-            if winningplayer == player2:
-                tournamentgame.winner = 2
+            if winningplayer == 1:
+                self.ui.tournament.setWinner(1)
+            if winningplayer == -1:
+                self.ui.tournament.setWinner(2)
             self.ui.displayCurrentTournament()
 
 
@@ -62,10 +63,13 @@ class Game:
         self.board = None
         self.ui.game = None
         if self.istournament:
-            if self.tournamentgame.countgames < 2:
-                self.tournamentgame.countgames = self.tournamentgame.countgames+1
+            if self.tournamentgame.gamecount < 2:
+                self.tournamentgame.gamecount = self.tournamentgame.gamecount+1
                 self.ui.displayTournamentGame(True)
-            else 
+            else:
+                self.tournamentgame.winner = math.floor(random.random()*2+1)
+                self.ui.displayCurrentTournament()
+
 
     def checkWin(self):
         """
