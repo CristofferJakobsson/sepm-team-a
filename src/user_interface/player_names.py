@@ -51,7 +51,7 @@ class Playernames:
 									((self.screen.get_width() / 2) - 200, (self.screen.get_height() / 2) - 25))
 		pygame.display.flip()
 
-	def ask(self, question):
+	def ask(self, question, previousanswers=[]):
 		"""
 		Asks the player a question and expects an input in the form of key-presses on the keyboard
 
@@ -68,7 +68,8 @@ class Playernames:
 			if inkey == K_BACKSPACE:
 				current_string = current_string[0:-1]
 			elif inkey == K_RETURN:
-				break
+				if (not len([s for s in previousanswers if s=="".join(current_string)])>0):
+					break
 			elif inkey == K_MINUS:
 				current_string.append("_")
 			elif inkey <= 127:

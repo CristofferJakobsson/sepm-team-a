@@ -74,11 +74,20 @@ class game_engine:
 		:param board: A reference to the current game board
 		:param currentplayer: A reference to the Computer object whose move is to be decided
 		:param max_player: The player we want to win.
-		:return: TODO
+		:return: the Player and the best move for that Player
 		"""
 		return self.nextMove(board, currentplayer, max_player)
 
 	def nextMove(self, board, currentplayer, max_player):
+		"""
+		Next move decided by minimax decision rule to decide the move for the given Player by minimizing the loss for the worst case scenario move.
+
+		:param self: A reference to the game_engine object itself
+		:param board: A reference to the current game board
+		:param currentplayer: A reference to the Computer object whose move is to be decided
+		:param max_player: The player we want to win.
+		:return: the Player and the best move for that Player
+		"""
 		if self.game_over(board):
 			if self.winning(board, max_player): return 1,1
 			elif self.winning(board, max_player*-1): return -1,-1
@@ -87,7 +96,7 @@ class game_engine:
 			avail = self.available_moves(board)
 			c = len(avail)
 			if  c == 9: return 1,4
-			
+
 			nextplayer = currentplayer * -1
 			newboard = []
 
@@ -139,6 +148,14 @@ class game_engine:
 		return False
 
 	def game_over(self,board):
+		"""
+		Checks if the game is over.
+
+		:param self: A reference to the game_engine object itself
+		:param board: A reference to the current game board
+		:param player: A reference to the current game board
+		:return: returns a boolean whether the game is over or not
+		"""
 		if len(self.available_moves(board)) == 0:
 			return True
 		elif self.winning(board, 1):

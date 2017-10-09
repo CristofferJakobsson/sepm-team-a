@@ -11,6 +11,7 @@ class Tournament:
 		Construct a new Tournament object.
 
 		:param self: A reference to the Tournament object itself
+		:param players: a list containing names of players in the tournament
 		:return: returns nothing
 		"""
 		self.currentGame = 0
@@ -144,18 +145,21 @@ class Tournament:
 		for n in range(int(len(self.players) / 2)):
 			self.matches.append(TournamentGame(self.players[n], self.players[len(self.players)-n-1]))
 
-	# def setWinner(self, playername):
-	# 	"""
-	# 	Appends the current winners to a list belonging to the Tournament object which contains the players advancing to the next round.
+	def setWinner(self, playername):
+		"""
+		Appends the current winners to a list belonging to the Tournament object which contains the players advancing to the next round.
 
-	# 	:param self: A reference to the Tournament object itself
-	# 	:return: returns nothing
-	# 	"""
-	# 	self.ontothenext.append(playername)
-	# 	if len(self.matches) == 1:
-	# 		self.matches = []
-	# 	for n in range(len(self.matches)-1):
-	# 		if self.matches[n][0] == playername:
-	# 			del self.matches[n]
-	# 		if self.matches[n][1] == playername:
-	# 			del self.matches[n]
+		:param self: A reference to the Tournament object itself
+		:param playername: Name of the winning player
+		:return: returns nothing
+		"""
+		self.ontothenext.append(playername)
+		if len(self.matches) == 1:
+			self.matches = []
+		for n in range(len(self.matches)-1):
+			if self.matches[n][0] == playername:
+				del self.matches[n]
+			if self.matches[n][1] == playername:
+				del self.matches[n]
+
+

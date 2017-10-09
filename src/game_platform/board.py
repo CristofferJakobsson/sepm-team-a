@@ -12,6 +12,7 @@ class Board:
 		Construct a new Board object.
 
 		:param self: A reference to the Board object itself
+		:param ui: A reference to the GameUI object
 		:return: returns nothing
 		"""
         self.player1 = ui.playernames[0]
@@ -34,7 +35,9 @@ class Board:
 
         self.drawBoard()
 
-    def drawCross(self, box):
+    def drawCross(self, box, iconWidth=-1):
+        if iconWidth == -1:
+            iconWidth = self.iconthickness
         """
 		Draws a cross on the screen within a given box of the Tic Tac Toe game.
 
@@ -48,10 +51,10 @@ class Board:
         start2 = ((box.right - self.iconoffset), (box.top + self.iconoffset))
         end2 = ((box.left + self.iconoffset), (box.bottom - self.iconoffset))
 
-        self.pygame.draw.line(self.gameArea, self.color_cross, start1, end1, self.iconthickness)
-        self.pygame.draw.line(self.gameArea, self.color_cross, start2, end2, self.iconthickness)
+        self.pygame.draw.line(self.gameArea, self.color_cross, start1, end1, iconWidth)
+        self.pygame.draw.line(self.gameArea, self.color_cross, start2, end2, iconWidth)
 
-    def drawCircle(self, box):
+    def drawCircle(self, box, iconWidth=-1):
         """
 		Draws a circle on the screen within a given box of the Tic Tac Toe game.
 
@@ -60,7 +63,13 @@ class Board:
 		:return: returns nothing
 		"""
         #circle(Surface, color, pos, radius, width=0) -> Rect
-        self.pygame.draw.circle(self.gameArea, self.color_circle, box.center, math.floor((box.height - self.iconoffset)/2), self.iconthickness)
+        if iconWidth == -1:
+            iconWidth = self.iconthickness
+        self.pygame.draw.circle(self.gameArea,
+                                self.color_circle, 
+                                box.center,
+                                math.floor((box.height - self.iconoffset)/2),
+                                iconWidth)
 
     def updateBoardState(self, state):
         """
@@ -148,6 +157,38 @@ class Board:
                 return box.id
         return -1
 
+    def drawWinBoard(self, player):
+        self.gameArea.fill(self.ui.color_background)
+        iconRect = self.pygame.Rect(35, 0, self.gameArea.get_width()-35, self.gameArea.get_height()-70)
+        if(player == 1):
+            self.drawCross(iconRect, 35)
+        if(player == -1):
+            self.drawCircle(iconRect, 35)
+
+        coords = 110, 330
+        color = (0,0,0)
+        font = self.pygame.font.SysFont("sans", 52)
+        txt = font.render("WINNER", True, color)
+        self.gameArea.blit(txt, coords)
+
+    def drawDrawBoard(self):
+        self.gameArea.fill(self.ui.color_background)
+
+        coords1 = 110, 170
+        coords2 = 110, 220
+        coords3 = 110, 270
+        coords4 = 110, 320
+        color = (0,0,0)
+        font = self.pygame.font.SysFont("sans", 52)
+        row1 = font.render("It's", True, color)
+        row2 = font.render("A", True, color)
+        row3 = font.render("Goddamn", True, color)
+        row4 = font.render("Draw!!", True, color)
+        self.gameArea.blit(row1, coords1)
+        self.gameArea.blit(row2, coords2)
+        self.gameArea.blit(row3, coords3)
+        self.gameArea.blit(row4, coords4)
+
 
     class Box:
         """
@@ -170,6 +211,7 @@ class Board:
             Checks if a given mouse click was within the Box's coordinates
 
             :param self: A reference to the Box object itself
+            :param mousepos: The position of where the mouse was when clicked
             :return: returns a boolean condition whether the mouse click's coordinates was within the Box coordinates
             """
             return self.rect.collidepoint(mousepos)
