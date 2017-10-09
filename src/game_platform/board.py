@@ -26,7 +26,9 @@ class Board:
 
         self.drawBoard()
 
-    def drawCross(self, box):
+    def drawCross(self, box, iconWidth=-1):
+        if iconWidth == -1:
+            iconWidth = self.iconthickness
 
         start1 = ((box.left + self.iconoffset), (box.top + self.iconoffset))
         end1 = ((box.right-self.iconoffset), (box.bottom-self.iconoffset))
@@ -34,12 +36,18 @@ class Board:
         start2 = ((box.right - self.iconoffset), (box.top + self.iconoffset))
         end2 = ((box.left + self.iconoffset), (box.bottom - self.iconoffset))
 
-        self.pygame.draw.line(self.gameArea, self.color_cross, start1, end1, self.iconthickness)
-        self.pygame.draw.line(self.gameArea, self.color_cross, start2, end2, self.iconthickness)
+        self.pygame.draw.line(self.gameArea, self.color_cross, start1, end1, iconWidth)
+        self.pygame.draw.line(self.gameArea, self.color_cross, start2, end2, iconWidth)
 
-    def drawCircle(self, box):
+    def drawCircle(self, box, iconWidth=-1):
         #circle(Surface, color, pos, radius, width=0) -> Rect
-        self.pygame.draw.circle(self.gameArea, self.color_circle, box.center, math.floor((box.height - self.iconoffset)/2), self.iconthickness)
+        if iconWidth == -1:
+            iconWidth = self.iconthickness
+        self.pygame.draw.circle(self.gameArea,
+                                self.color_circle, 
+                                box.center,
+                                math.floor((box.height - self.iconoffset)/2),
+                                iconWidth)
 
     def updateBoardState(self, state):
         self.ui.renderTop(self.player1, self.player2, self.ui.game.currentplayer)
@@ -100,6 +108,20 @@ class Board:
             if box.checkMouseClick(adjustMousePos(mousepos, self.gameArea.get_abs_offset())):
                 return box.id
         return -1
+
+    def drawWinBoard(self, player):
+        self.gameArea.fill(self.ui.color_background)
+        iconRect = self.pygame.Rect(35, 0, self.gameArea.get_width()-35, self.gameArea.get_height()-70)
+        if(player == 1):
+            self.drawCross(iconRect, 35)
+        if(player == -1):
+            self.drawCircle(iconRect, 35)
+
+        coords = 45, 45
+        color = (0,0,0)
+        font = self.pygame.font.SysFont("sans", 18)
+        txt = font.render("WINNER", True, color)
+        self.gameArea.blit(txt, coords)
 
 
     class Box:

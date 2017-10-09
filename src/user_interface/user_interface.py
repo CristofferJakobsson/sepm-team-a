@@ -281,7 +281,7 @@ class GameUI:
 
 		self.playernames = []
 
-		self.playernames.append(self.askfornames.ask("Player 1"))
+		self.playernames.append(self.askfornames.ask("Player 1", self.playernames))
 		self.playernames.append("Computer")
 		self.displayGame(self.playernames[0], self.playernames[1])
 
@@ -296,8 +296,8 @@ class GameUI:
 		buttonHeight = 50
 
 		self.playernames = []
-		self.playernames.append(self.askfornames.ask("Player 1"))
-		self.playernames.append(self.askfornames.ask("Player 2"))
+		self.playernames.append(self.askfornames.ask("Player 1", self.playernames))
+		self.playernames.append(self.askfornames.ask("Player 2", self.playernames))
 		self.displayGame(self.playernames[0], self.playernames[1])
 
 	def displayCreateTournament(self):
@@ -313,7 +313,7 @@ class GameUI:
 		self.playernames = []
 
 		for n in range(8):
-			self.playernames.append(self.askfornames.ask("Player " + str(n+1)))
+			self.playernames.append(self.askfornames.ask("Player " + str(n+1), self.playernames))
 
 		self.mainArea.fill(self.color_background)
 

@@ -39,6 +39,19 @@ class Game:
 		"""
         self.board = Board(ui)
 
+    def handleWin(self, winningplayer):
+        print("Someone won")
+        #gamearea = self.board.gameArea
+        #gamearea.fill(self.ui.pygame.Color(0, 0, 0), gamearea.left, gamearea.top, gamearea.right, gamearea.bottom)
+        self.board.drawWinBoard(winningplayer)
+        self.board = None
+        self.ui.game = None        
+
+    def handleDraw(self):
+        print("Its a draaaw")
+        self.board = None
+        self.ui.game = None
+
     def checkWin(self):
         """
 		Checks if a Player in the Game reached winning conditions
@@ -56,11 +69,11 @@ class Game:
                      (2, 4, 6)]
         for state in winstates:
             if (self.gameState[state[0]] + self.gameState[state[1]] + self.gameState[state[2]]) == 3:
-                return 1
+                self.handleWin(1)
             if (self.gameState[state[0]] + self.gameState[state[1]] + self.gameState[state[2]]) == -3:
-                return -1
+                self.handleWin(-1)
         if len([i for i in range(9) if self.gameState[i] == 0]) == 0: 
-            return 0
+            self.handleDraw()
         return None
 
     def validmove(self, boxId):
@@ -76,7 +89,7 @@ class Game:
         
         if self.validmove(boxId):
             self.makemove(boxId)
-
+        self.checkWin()
 
     def makemove(self,boxId):
         """
