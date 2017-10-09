@@ -340,9 +340,9 @@ class GameUI:
 		self.playernames = []
 		numplayers = 0
 
-		while(numplayers not in range(1,8)):
+		while(numplayers not in range(2,8)):
 			try:
-				numplayers = int(self.askfornames.ask("Number of players: (1-8)"))
+				numplayers = int(self.askfornames.ask("Number of players: (2-8)"))
 			except ValueError:
 				pass
 
@@ -360,9 +360,7 @@ class GameUI:
 		buttonHeight = 50
 		self.mainArea.fill(self.color_background)
 		
-		
 		self.tournament.drawBracket()
-
 
 		self.visiblebuttons.append(
 			Button(pygame, self.mainArea).create(
@@ -386,13 +384,19 @@ class GameUI:
 				450,
 				buttonHalfWidth*2,
 				buttonHeight,
-				"Start Tournament",
+				"Play",
 				self.displayTournamentGame
 			)
 		)
 
-	def displayTournamentGame(self): 
+	def displayTournamentGame(self, playedgames = 0): 
+		# if (playedgames == 2):
+			#  slumpa fram vinnare...
+		# players, match = self.tournament.getNextMatch()
 		pass
+
+		# self.tournament.setWinner() 1 || 2
+		# self.displayCurrentTournament()
 
 ui = GameUI()
 while 1:
