@@ -5,7 +5,7 @@ class Game:
     """
 	Game is the main class for the Game Platform Interface
 	"""
-    def __init__(self, ui, player1, player2, istournament=False):
+    def __init__(self, ui, player1, player2, istournament=False, tournamentgame=None):
         """
 		Construct a new Game object.
 
@@ -18,6 +18,7 @@ class Game:
         self.player1 = player1
         self.player2 = player2
         self.istournament = istournament
+        self.tournamentgame = tournamentgame
 
         self.gameState =   [0, 0, 0,
                             0, 0, 0,
@@ -46,13 +47,25 @@ class Game:
         #gamearea.fill(self.ui.pygame.Color(0, 0, 0), gamearea.left, gamearea.top, gamearea.right, gamearea.bottom)
         self.board.drawWinBoard(winningplayer)
         self.board = None
-        self.ui.game = None        
+        self.ui.game = None
+        if self.istournament:
+            if winningplayer == player1:
+                tournamentgame.winner = 1
+            if winningplayer == player2:
+                tournamentgame.winner = 2
+            self.ui.displayCurrentTournament()
+
 
     def handleDraw(self):
         print("Its a draaaw")
         self.board.drawDrawBoard()
         self.board = None
         self.ui.game = None
+        if self.istournament:
+            if self.tournamentgame.countgames < 2:
+                self.tournamentgame.countgames = self.tournamentgame.countgames+1
+                self.ui.displayTournamentGame(True)
+            else 
 
     def checkWin(self):
         """
@@ -73,13 +86,11 @@ class Game:
         for state in winstates:
             if (self.gameState[state[0]] + self.gameState[state[1]] + self.gameState[state[2]]) == 3:
                 self.handleWin(1)
-                print("Player 1 won")
                 win = True
             elif (self.gameState[state[0]] + self.gameState[state[1]] + self.gameState[state[2]]) == -3:
                 self.handleWin(-1)
-                print("Player 2 won")
                 win = True
-        
+
         if len([i for i in range(9) if self.gameState[i] == 0]) == 0 and not win: 
                 print("Draw yo")
                 self.handleDraw()

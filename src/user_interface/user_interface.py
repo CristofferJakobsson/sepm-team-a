@@ -391,8 +391,13 @@ class GameUI:
 			)
 		)
 
-	def displayTournamentGame(self): 
-		pass
+	def displayTournamentGame(self, replaygame=False): 
+		if replaygame: 
+			tournamentGame = self.tournament.getCurrentMatch()[1]
+		else: 
+			tournamentGame = self.tournament.getNextMatch()[1]
+		
+		self.game = Game(self.ui, tournamentGame.player1, tournamentGame.player2, True)
 
 ui = GameUI()
 while 1:
