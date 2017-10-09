@@ -69,20 +69,15 @@ class Playernames:
 				current_string = current_string[0:-1]
 			elif inkey == K_RETURN:
 				if (not len([s for s in previousanswers if s=="".join(current_string)])>0):
+					# current_string = question
 					break
 			elif inkey == K_MINUS:
 				current_string.append("_")
 			elif inkey <= 127:
 				current_string.append(chr(inkey))
 			self.display_box(question + ": " + "".join(current_string))
-		return "".join(current_string)
-
-
-
-# def main():
-# 	screen = pygame.display.set_mode((320,240))
-# 	pn = Playernames(screen)
-# 	pn.askfor(8)
-
-
-# if __name__ == '__main__': main()
+		
+		if len(current_string) == 0:
+			return question
+		else:
+			return "".join(current_string)

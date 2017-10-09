@@ -4,6 +4,7 @@ from button import Button
 from centeredtext import centeredtext
 #from board import Board
 from player_names import Playernames
+from tournament_tree import Tournament
 
 import sys
 sys.path.insert(0, '../game_platform')
@@ -337,42 +338,26 @@ class GameUI:
 		self.mainArea.fill(self.color_background)
 		buttonHalfWidth = 150
 		buttonHeight = 50
-
+		self.visiblebuttons = []
 		self.playernames = []
+		numplayers = 0
 
-		for n in range(8):
+		while(numplayers not in range(1,8)):
+			try:
+				numplayers = int(self.askfornames.ask("Number of players: (1-8)"))
+			except ValueError:
+				pass
+
+		for n in range(numplayers):
 			self.playernames.append(self.askfornames.ask("Player " + str(n+1), self.playernames))
 
+
 		self.mainArea.fill(self.color_background)
+		
+		tournament = Tournament(self, self.playernames)
+		tournament.drawBracket()
 
-		self.visiblebuttons = []
 
-		x = 20
-		y = 20
-
-		for n in range(8):
-			y = y + 80
-
-			if n % 2 == 0:
-				x = 100
-			else:
-				y = y - 80
-				x = 825
-
-			if len(self.playernames[n]) != 0:
-				self.visiblebuttons.append(
-					Button(pygame, self.mainArea).create(
-						self.color_menu,
-						self.color_darktext,
-						self.color_border,
-						x,
-						y,
-						buttonHalfWidth*2.5,
-						buttonHeight,
-						self.playernames[n],
-						self.displayMainMenu
-					)
-				)
 
 		self.visiblebuttons.append(
 			Button(pygame, self.mainArea).create(
