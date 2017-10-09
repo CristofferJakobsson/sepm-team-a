@@ -18,7 +18,9 @@
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="abc.html">abc</a><br>
-</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+</td><td width="25%" valign=top><a href="math.html">math</a><br>
+</td><td width="25%" valign=top><a href="random.html">random</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -67,10 +69,11 @@ Methods defined here:<br>
 :param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Computer">Computer</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
 :return:&nbsp;returns&nbsp;a&nbsp;boolean&nbsp;stating&nbsp;if&nbsp;the&nbsp;<a href="#Player">Player</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;is&nbsp;of&nbsp;type&nbsp;<a href="#Human">Human</a></tt></dd></dl>
 
-<dl><dt><a name="Computer-play"><strong>play</strong></a>(self, state)</dt><dd><tt>Abstract&nbsp;method&nbsp;that&nbsp;defines&nbsp;a&nbsp;"play"&nbsp;function&nbsp;for&nbsp;<a href="#Player">Player</a>&nbsp;objects,&nbsp;to&nbsp;be&nbsp;defined&nbsp;in&nbsp;subclasses.<br>
+<dl><dt><a name="Computer-play"><strong>play</strong></a>(self, state)</dt><dd><tt>Performs&nbsp;a&nbsp;given&nbsp;play<br>
 &nbsp;<br>
-:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Player">Player</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
-:param&nbsp;state:&nbsp;A&nbsp;variable&nbsp;containing&nbsp;whatever&nbsp;state&nbsp;to&nbsp;use&nbsp;in&nbsp;subclass-defined&nbsp;versions&nbsp;of&nbsp;this&nbsp;method</tt></dd></dl>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Human">Human</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:param&nbsp;state:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;current&nbsp;game&nbsp;state<br>
+:return:&nbsp;returns&nbsp;a&nbsp;random&nbsp;integer&nbsp;representing&nbsp;an&nbsp;index&nbsp;in&nbsp;the&nbsp;game&nbsp;board</tt></dd></dl>
 
 <hr>
 Data and other attributes defined here:<br>
@@ -111,10 +114,11 @@ Methods defined here:<br>
 :param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Human">Human</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
 :return:&nbsp;returns&nbsp;a&nbsp;boolean&nbsp;stating&nbsp;if&nbsp;the&nbsp;<a href="#Player">Player</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;is&nbsp;of&nbsp;type&nbsp;<a href="#Human">Human</a></tt></dd></dl>
 
-<dl><dt><a name="Human-play"><strong>play</strong></a>(self, state)</dt><dd><tt>Abstract&nbsp;method&nbsp;that&nbsp;defines&nbsp;a&nbsp;"play"&nbsp;function&nbsp;for&nbsp;<a href="#Player">Player</a>&nbsp;objects,&nbsp;to&nbsp;be&nbsp;defined&nbsp;in&nbsp;subclasses.<br>
+<dl><dt><a name="Human-play"><strong>play</strong></a>(self, state)</dt><dd><tt>Performs&nbsp;a&nbsp;given&nbsp;play<br>
 &nbsp;<br>
-:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Player">Player</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
-:param&nbsp;state:&nbsp;A&nbsp;variable&nbsp;containing&nbsp;whatever&nbsp;state&nbsp;to&nbsp;use&nbsp;in&nbsp;subclass-defined&nbsp;versions&nbsp;of&nbsp;this&nbsp;method</tt></dd></dl>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Human">Human</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:param&nbsp;state:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;current&nbsp;game&nbsp;state<br>
+:return:&nbsp;returns&nbsp;an&nbsp;integer&nbsp;representing&nbsp;an&nbsp;index&nbsp;in&nbsp;the&nbsp;game&nbsp;board</tt></dd></dl>
 
 <hr>
 Data and other attributes defined here:<br>

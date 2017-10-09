@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module game_engine</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>game_engine</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/kasperramstrom/Development/school/sepm-team-a/src/game_engine/game_engine.py">/Users/kasperramstrom/Development/school/sepm-team-a/src/game_engine/game_engine.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="random.html">random</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="game_engine.html#game_engine">game_engine</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="game_engine">class <strong>game_engine</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#game_engine">game_engine</a>&nbsp;is&nbsp;the&nbsp;class&nbsp;that&nbsp;controls&nbsp;Computer&nbsp;moves,&nbsp;keeps&nbsp;track&nbsp;of&nbsp;game&nbsp;state&nbsp;such&nbsp;as&nbsp;possible&nbsp;moves&nbsp;and&nbsp;if&nbsp;a&nbsp;player&nbsp;has&nbsp;won<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="game_engine-__init__"><strong>__init__</strong></a>(self, level)</dt><dd><tt>Construct&nbsp;a&nbsp;new&nbsp;<a href="#game_engine">game_engine</a>&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#game_engine">game_engine</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:return:&nbsp;returns&nbsp;nothing</tt></dd></dl>
+
+<dl><dt><a name="game_engine-available_moves"><strong>available_moves</strong></a>(self, board)</dt><dd><tt>A&nbsp;list&nbsp;containing&nbsp;current&nbsp;possible&nbsp;moves.<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#game_engine">game_engine</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:param&nbsp;board:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;current&nbsp;game&nbsp;board<br>
+:return:&nbsp;returns&nbsp;a&nbsp;list&nbsp;containing&nbsp;current&nbsp;possible&nbsp;moves</tt></dd></dl>
+
+<dl><dt><a name="game_engine-game_over"><strong>game_over</strong></a>(self, board)</dt><dd><tt>Checks&nbsp;if&nbsp;the&nbsp;game&nbsp;is&nbsp;over.<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#game_engine">game_engine</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:param&nbsp;board:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;current&nbsp;game&nbsp;board<br>
+:param&nbsp;player:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;current&nbsp;game&nbsp;board<br>
+:return:&nbsp;returns&nbsp;a&nbsp;boolean&nbsp;whether&nbsp;the&nbsp;game&nbsp;is&nbsp;over&nbsp;or&nbsp;not</tt></dd></dl>
+
+<dl><dt><a name="game_engine-hardmove"><strong>hardmove</strong></a>(self, board, currentplayer)</dt><dd><tt>The&nbsp;Best&nbsp;move&nbsp;for&nbsp;the&nbsp;given&nbsp;Player&nbsp;(Computer)&nbsp;to&nbsp;make&nbsp;among&nbsp;possible&nbsp;moves.<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#game_engine">game_engine</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:param&nbsp;board:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;current&nbsp;game&nbsp;board<br>
+:param&nbsp;currentplayer:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;Computer&nbsp;<a href="builtins.html#object">object</a>&nbsp;whose&nbsp;move&nbsp;is&nbsp;to&nbsp;be&nbsp;decided<br>
+:return:&nbsp;returns&nbsp;the&nbsp;move&nbsp;for&nbsp;the&nbsp;Player&nbsp;to&nbsp;make</tt></dd></dl>
+
+<dl><dt><a name="game_engine-makemove"><strong>makemove</strong></a>(self, board, currentplayer)</dt><dd><tt>Decides&nbsp;on&nbsp;what&nbsp;kind&nbsp;of&nbsp;move&nbsp;the&nbsp;given&nbsp;Player&nbsp;(Computer)&nbsp;should&nbsp;make&nbsp;depending&nbsp;on&nbsp;its&nbsp;difficulty&nbsp;level.<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#game_engine">game_engine</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:param&nbsp;board:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;current&nbsp;game&nbsp;board<br>
+:param&nbsp;currentplayer:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;Computer&nbsp;<a href="builtins.html#object">object</a>&nbsp;whose&nbsp;move&nbsp;is&nbsp;to&nbsp;be&nbsp;decided<br>
+:return:&nbsp;returns&nbsp;the&nbsp;move&nbsp;for&nbsp;the&nbsp;Player&nbsp;to&nbsp;make</tt></dd></dl>
+
+<dl><dt><a name="game_engine-minmax"><strong>minmax</strong></a>(self, board, currentplayer, max_player)</dt><dd><tt>Minimax&nbsp;decision&nbsp;rule&nbsp;to&nbsp;decide&nbsp;the&nbsp;move&nbsp;for&nbsp;the&nbsp;given&nbsp;Player&nbsp;by&nbsp;minimizing&nbsp;the&nbsp;loss&nbsp;for&nbsp;the&nbsp;worst&nbsp;case&nbsp;scenario&nbsp;move.<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#game_engine">game_engine</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:param&nbsp;board:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;current&nbsp;game&nbsp;board<br>
+:param&nbsp;currentplayer:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;Computer&nbsp;<a href="builtins.html#object">object</a>&nbsp;whose&nbsp;move&nbsp;is&nbsp;to&nbsp;be&nbsp;decided<br>
+:param&nbsp;max_player:&nbsp;The&nbsp;player&nbsp;we&nbsp;want&nbsp;to&nbsp;win.<br>
+:return:&nbsp;the&nbsp;Player&nbsp;and&nbsp;the&nbsp;best&nbsp;move&nbsp;for&nbsp;that&nbsp;Player</tt></dd></dl>
+
+<dl><dt><a name="game_engine-nextMove"><strong>nextMove</strong></a>(self, board, currentplayer, max_player)</dt><dd><tt>Next&nbsp;move&nbsp;decided&nbsp;by&nbsp;minimax&nbsp;decision&nbsp;rule&nbsp;to&nbsp;decide&nbsp;the&nbsp;move&nbsp;for&nbsp;the&nbsp;given&nbsp;Player&nbsp;by&nbsp;minimizing&nbsp;the&nbsp;loss&nbsp;for&nbsp;the&nbsp;worst&nbsp;case&nbsp;scenario&nbsp;move.<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#game_engine">game_engine</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:param&nbsp;board:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;current&nbsp;game&nbsp;board<br>
+:param&nbsp;currentplayer:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;Computer&nbsp;<a href="builtins.html#object">object</a>&nbsp;whose&nbsp;move&nbsp;is&nbsp;to&nbsp;be&nbsp;decided<br>
+:param&nbsp;max_player:&nbsp;The&nbsp;player&nbsp;we&nbsp;want&nbsp;to&nbsp;win.<br>
+:return:&nbsp;the&nbsp;Player&nbsp;and&nbsp;the&nbsp;best&nbsp;move&nbsp;for&nbsp;that&nbsp;Player</tt></dd></dl>
+
+<dl><dt><a name="game_engine-randommove"><strong>randommove</strong></a>(self, board, currentplayer)</dt><dd><tt>A&nbsp;random&nbsp;move,&nbsp;among&nbsp;possible&nbsp;moves&nbsp;for&nbsp;the&nbsp;Player&nbsp;(Computer)&nbsp;to&nbsp;make.<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#game_engine">game_engine</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:param&nbsp;board:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;current&nbsp;game&nbsp;board<br>
+:param&nbsp;currentplayer:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;Computer&nbsp;<a href="builtins.html#object">object</a>&nbsp;whose&nbsp;move&nbsp;is&nbsp;to&nbsp;be&nbsp;decided<br>
+:return:&nbsp;returns&nbsp;the&nbsp;move&nbsp;for&nbsp;the&nbsp;Player&nbsp;to&nbsp;make</tt></dd></dl>
+
+<dl><dt><a name="game_engine-winning"><strong>winning</strong></a>(self, board, player)</dt><dd><tt>Checks&nbsp;if&nbsp;given&nbsp;Player&nbsp;has&nbsp;won.<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#game_engine">game_engine</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:param&nbsp;board:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;current&nbsp;game&nbsp;board<br>
+:param&nbsp;player:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;current&nbsp;game&nbsp;board<br>
+:return:&nbsp;returns&nbsp;a&nbsp;boolean&nbsp;whether&nbsp;the&nbsp;given&nbsp;Player&nbsp;has&nbsp;won</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>stdout</strong> = &lt;_io.TextIOWrapper name='&lt;stdout&gt;' mode='w' encoding='UTF-8'&gt;</td></tr></table>
+</body></html>
