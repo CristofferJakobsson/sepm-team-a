@@ -39,7 +39,7 @@ class Game:
 		:param ui: The user interface to display
 		:return: returns nothing
 		"""
-        self.ui.mainArea.fill(self.ui.color_background)
+        #self.ui.mainArea.fill(self.ui.color_background)
         self.board = Board(ui)
 
     def handleWin(self, winningplayer):

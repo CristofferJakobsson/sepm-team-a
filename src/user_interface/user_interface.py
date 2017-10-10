@@ -180,7 +180,7 @@ class GameUI:
 		if(hasattr(self, 'game')):
 			if(self.game):
 				self.game.gameTic()
-
+		
 		pygame.display.flip()
 
 	def displayMainMenu(self):
@@ -282,6 +282,7 @@ class GameUI:
 			))
 		]
 		if tournamentgame:
+			print("This is a tournamentgame")
 			self.game = Game(self, player1, player2, True, tournamentgame)
 		else: 
 			self.game = Game(self, player1, player2)
