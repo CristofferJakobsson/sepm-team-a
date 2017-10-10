@@ -124,9 +124,9 @@ class Tournament:
 				nextpicked = True
 			else:
 				self.drawMatch(match, x, y)
-			rows = rows + 1
+			rows = rows + 2
 			if rows == maxrows:
-				maxrows = maxrows -1
+				maxrows = maxrows - 2
 				cols = cols + 1
 				rows = 1
 				x = x + xoffset
