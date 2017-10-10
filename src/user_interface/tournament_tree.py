@@ -156,8 +156,8 @@ class Tournament:
 		elif match.winner == 2:
 			player1color = self.ui.color_lighttext
 		elif is_next == True:
-			player1color = self.ui.color_background
-			player2color = self.ui.color_background
+			player1color = self.ui.color_highlight
+			player2color = self.ui.color_highlight
 
 		self.ui.visiblebuttons.append(
 			Button(self.ui.pygame, self.ui.mainArea).create(
