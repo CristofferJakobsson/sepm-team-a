@@ -41,6 +41,7 @@ class GameUI:
 		self.color_darktext 	= pygame.Color(74, 74, 74)
 		self.color_darkgreen 	= pygame.Color(14,151,135)
 		self.color_black 		= pygame.Color(0,0,0)
+		self.color_highlight 	= pygame.Color(83, 241, 162)
 
 		pygame.init()
 
