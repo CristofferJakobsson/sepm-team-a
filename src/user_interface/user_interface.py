@@ -40,6 +40,7 @@ class GameUI:
 		self.color_lighttext 	= pygame.Color(149, 152, 154)
 		self.color_darktext 	= pygame.Color(74, 74, 74)
 		self.color_darkgreen 	= pygame.Color(14,151,135)
+		self.color_black 		= pygame.Color(0,0,0)
 
 		pygame.init()
 
@@ -358,6 +359,7 @@ class GameUI:
 		
 
 	def displayCurrentTournament(self):
+		self.renderTop("","", 1)
 		buttonHalfWidth = 150
 		buttonHeight = 50
 		self.mainArea.fill(self.color_background)
@@ -390,8 +392,6 @@ class GameUI:
 				self.displayTournamentGame
 			)
 		)
-		print(str(len(self.tournament.players)))
-		print(str(len(self.tournament.matches)))
 
 	def displayTournamentGame(self, replaygame=False): 
 		self.visiblebuttons = []

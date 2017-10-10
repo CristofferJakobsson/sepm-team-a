@@ -116,9 +116,14 @@ class Tournament:
 		y = ystart
 		rows = 0
 		cols = 1
+		nextpicked = None
 		maxrows = self.maxrows
 		for match in self.matches:
-			self.drawMatch(match, x, y)
+			if nextpicked == None and match.winner == None:
+				self.drawMatch(match, x, y, True)
+				nextpicked = True
+			else:
+				self.drawMatch(match, x, y)
 			rows = rows + 1
 			if rows == maxrows:
 				maxrows = maxrows -1
@@ -140,7 +145,7 @@ class Tournament:
 				
 
 
-	def drawMatch(self, match, x, y):
+	def drawMatch(self, match, x, y, is_next = False):
 		width = 200
 		height = 40
 
@@ -150,6 +155,9 @@ class Tournament:
 			player2color = self.ui.color_lighttext
 		elif match.winner == 2:
 			player1color = self.ui.color_lighttext
+		elif is_next == True:
+			player1color = self.ui.color_background
+			player2color = self.ui.color_background
 
 		self.ui.visiblebuttons.append(
 			Button(self.ui.pygame, self.ui.mainArea).create(
