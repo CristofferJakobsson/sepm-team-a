@@ -361,7 +361,7 @@ class GameUI:
 		buttonHalfWidth = 150
 		buttonHeight = 50
 		self.mainArea.fill(self.color_background)
-		
+		self.visiblebuttons = []
 		self.tournament.drawBracket()
 
 		self.visiblebuttons.append(
@@ -394,6 +394,8 @@ class GameUI:
 		print(str(len(self.tournament.matches)))
 
 	def displayTournamentGame(self, replaygame=False): 
+		self.visiblebuttons = []
+		self.mainArea.fill(self.color_background)
 		if replaygame: 
 			tournamentGame = self.tournament.getCurrentMatch()[1]
 		else: 

@@ -84,9 +84,6 @@ class Tournament:
 		return self.matches
 
 	def getNextMatch(self): 
-		# if more then two players create a new match.
-#		if len(self.players) >= 2:
-#			self.makeMatches()
 		
 		mem = self.currentGame
 		
@@ -98,8 +95,6 @@ class Tournament:
 
 
 	def getCurrentMatch(self):
-#		if len(self.players) >= 2:
-#			self.makeMatches()
 		mem = self.currentGame-1
 		if self.matches[mem]:
 			return 2,self.matches[mem]
@@ -108,6 +103,9 @@ class Tournament:
 
 
 	def drawBracket(self):
+		if len(self.players) >= 2:
+			self.makeMatches()
+
 		xoffset = 240
 		yoffset = 50
 
@@ -118,11 +116,12 @@ class Tournament:
 		y = ystart
 		rows = 0
 		cols = 1
+		maxrows = self.maxrows
 		for match in self.matches:
 			self.drawMatch(match, x, y)
 			rows = rows + 1
-			if rows == self.maxrows:
-				self.maxrows = self.maxrows -1
+			if rows == maxrows:
+				maxrows = maxrows -1
 				cols = cols + 1
 				rows = 1
 				x = x + xoffset
@@ -189,8 +188,10 @@ class Tournament:
 		:param self: A reference to the Tournament object itself
 		:return: returns nothing
 		"""
-		for n in range(int(len(self.players) / 2)):
-			self.matches.append(TournamentGame(self.players[n], self.players[len(self.players)-n-1]))
+
+		while len(self.players) > 1:
+			self.matches.append(TournamentGame(self.players.pop(), self.players.pop()))
+
 
 	def setWinner(self, player):
 		"""
@@ -202,6 +203,14 @@ class Tournament:
 		"""
 
 		self.matches[self.currentGame-1].setWinner(player)
+		if player == 1:
+			self.players.append(self.matches[self.currentGame-1].player1)
+		else:
+			self.players.append(self.matches[self.currentGame-1].player2)
+
+		print("We have a winner...")
+		print(self.players)
+
 		
 
 
