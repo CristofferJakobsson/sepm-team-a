@@ -1,6 +1,7 @@
 import abc
 import random
 import math
+import time
 
 class Player(metaclass=abc.ABCMeta):
 	"""
@@ -80,6 +81,7 @@ class Computer(Player):
 		self.name = name
 		self.level = level
 		self.human = False
+		self.timer = None
 
 	def isHuman(self):
 		"""
@@ -98,4 +100,13 @@ class Computer(Player):
 		:param state: A reference to the current game state
 		:return: returns a random integer representing an index in the game board
 		"""
+		if(self.timer == None):
+			self.timer = time.time()
+			return -1
+		else:
+			if(time.time()-self.timer < 0.5):
+				return -1
+			else:
+				self.timer = None
+
 		return math.floor(random.random()*9)

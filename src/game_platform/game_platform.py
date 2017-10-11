@@ -1,5 +1,5 @@
 from board import Board
-import random, math
+import random, math, time
 from player import Player, Human, Computer
 class Game:
     """
@@ -50,6 +50,7 @@ class Game:
         self.board = None
         self.ui.game = None
         if self.istournament:
+            time.sleep(3)
             if winningplayer == 1:
                 self.ui.tournament.setWinner(1)
             if winningplayer == -1:
@@ -60,14 +61,25 @@ class Game:
     def handleDraw(self):
         print("Its a draaaw")
         self.board.drawDrawBoard()
-        self.board = None
+
         self.ui.game = None
         if self.istournament:
             if self.tournamentgame.gamecount < 2:
                 self.tournamentgame.gamecount = self.tournamentgame.gamecount+1
+                self.board.displayTournamentDrawInfo(3-self.tournamentgame.gamecount)
+                time.sleep(3)
+                self.board = None
                 self.ui.displayTournamentGame(True)
             else:
-                self.tournamentgame.winner = math.floor(random.random()*2+1)
+                winner = math.floor(random.random()*2+1)
+                self.board.displayRandomizingWinner()
+                time.sleep(2)
+                if self.tournamentgame.winner == 1:
+                    self.board.drawWinBoard(1)
+                if self.tournamentgame.winner == 2:
+                    self.board.drawWinBoard(-1)
+                self.board = None
+                self.ui.tournament.setWinner(winner)
                 self.ui.displayCurrentTournament()
 
 

@@ -170,6 +170,7 @@ class Board:
         font = self.pygame.font.SysFont("sans", 52)
         txt = font.render("WINNER", True, color)
         self.gameArea.blit(txt, coords)
+        self.pygame.display.flip()
 
     def drawDrawBoard(self):
         self.gameArea.fill(self.ui.color_background)
@@ -189,6 +190,55 @@ class Board:
         self.gameArea.blit(row3, coords3)
         self.gameArea.blit(row4, coords4)
 
+    def displayTournamentDrawInfo(self, countdown):
+        self.gameArea.fill(self.ui.color_background)
+
+        coords1 = 110, 170
+        coords2 = 110, 220
+        coords3 = 110, 270
+        coords4 = 110, 320
+        color = (0,0,0)
+        font = self.pygame.font.SysFont("sans", 52)
+
+        row1_string = "DRAW!"
+        row2_string = "Randomize"
+        row3_string = "winner in"
+        row4_string = str(countdown) + " game"
+        if(countdown != 1):
+            row4_string += "s"
+
+        row1 = font.render(row1_string, True, color)
+        row2 = font.render(row2_string, True, color)
+        row3 = font.render(row3_string, True, color)
+        row4 = font.render(row4_string, True, color)
+        self.gameArea.blit(row1, coords1)
+        self.gameArea.blit(row2, coords2)
+        self.gameArea.blit(row3, coords3)
+        self.gameArea.blit(row4, coords4)
+        
+        self.ui.pygame.display.flip()
+
+    def displayRandomizingWinner(self):
+        self.gameArea.fill(self.ui.color_background)
+
+        coords1 = 110, 170
+        coords2 = 110, 220
+
+        color = (0,0,0)
+        font = self.pygame.font.SysFont("sans", 52)
+
+        row1_string = "Randomizing"
+        row2_string = "winner..."
+        
+
+        row1 = font.render(row1_string, True, color)
+        row2 = font.render(row2_string, True, color)
+    
+        self.gameArea.blit(row1, coords1)
+        self.gameArea.blit(row2, coords2)
+        
+        self.ui.pygame.display.flip()
+        
 
     class Box:
         """
