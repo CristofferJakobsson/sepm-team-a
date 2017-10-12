@@ -13,6 +13,8 @@ class Game:
 		:param ui: The user interface for the Game object
 		:param player1: A reference to Player 1 in the current Game
 		:param player2: A reference to Player 2 in the current Game
+		:param istournament: A boolean whether the current game is a tournament
+		:param tournamentgame: The active game of the tournament, 'None' if not part of a tournament
 		:return: returns nothing
 		"""
         self.player1 = player1
@@ -43,6 +45,13 @@ class Game:
         self.board = Board(ui)
 
     def handleWin(self, winningplayer):
+        """
+		Handles a game win and draws a win board on the screen. If part of a tournament, it will set the winning player as a winner in the tournament.
+
+		:param self: A reference to the Game object itself
+		:param winningplayer: A reference to the winning player
+		:return: returns nothing
+		"""
         print("Someone won")
         #gamearea = self.board.gameArea
         #gamearea.fill(self.ui.pygame.Color(0, 0, 0), gamearea.left, gamearea.top, gamearea.right, gamearea.bottom)
@@ -59,6 +68,12 @@ class Game:
 
 
     def handleDraw(self):
+        """
+		Handles a game draw and draws a draw board on the screen. If part of a tournament 3 draws have been made in a row, it will randomize a winner.
+
+		:param self: A reference to the Game object itself
+		:return: returns nothing
+		"""
         print("Its a draaaw")
         self.board.drawDrawBoard()
 
@@ -107,7 +122,7 @@ class Game:
                 self.handleWin(-1)
                 win = True
 
-        if len([i for i in range(9) if self.gameState[i] == 0]) == 0 and not win: 
+        if len([i for i in range(9) if self.gameState[i] == 0]) == 0 and not win:
                 print("Draw yo")
                 self.handleDraw()
         return None
@@ -124,7 +139,7 @@ class Game:
 
     def gameTic(self):
         """
-		Performs a Player move if it's valid
+		Performs a Player move if it's valid and checks if any win conditions were met by the move.
 
 		:param self: A reference to the Game object itself
 		:return: returns nothing
@@ -156,9 +171,9 @@ class Game:
         """
 		Handles mouse clicks within the Game coordinates
 
-		:param self: A reference to the GameUI object itself
+		:param self: A reference to the Game object itself
 		:param mousepos: The coordinates of where the mouse was clicked
-		:return: returns a boolean whether current Player has won
+		:return: returns nothing
 		"""
         if self.currentplayer == 1:
             if isinstance(self.player1, Computer):
@@ -170,6 +185,12 @@ class Game:
                 return
             else:
                 self.player2.move = self.board.findClickedBox(mousepos)
-    
+
     def playerForfeit(self):
+        """
+		Causes the current player to forfeit the current game.
+
+		:param self: A reference to the Game object itself
+		:return: returns nothing
+		"""
         self.handleWin(self.currentplayer*-1)
