@@ -16,6 +16,7 @@ class Tournament:
 		Construct a new Tournament object.
 
 		:param self: A reference to the Tournament object itself
+		:param ui: A reference to the GameUI object
 		:param players: a list containing names of players in the tournament
 		:return: returns nothing
 		"""
@@ -34,7 +35,7 @@ class Tournament:
 		for n in range(len(players)):
 			if len(players[n]) > 0:
 				self.players.append(Human(players[n]))
-		
+
 
 
 		c = 1
@@ -58,7 +59,7 @@ class Tournament:
 				l = "hard"
 			self.players.append(Computer("Computer " + str(c), l))
 			c = c + 1
-		
+
 		random.shuffle(self.players)
 
 		self.makeMatches()
@@ -79,22 +80,33 @@ class Tournament:
 		Returns the number of matches belonging to the Tournament object.
 
 		:param self: A reference to the Tournament object itself
-		:return: returns nothing
+		:return: returns the matches belonging to the Tournament object
 		"""
 		return self.matches
 
-	def getNextMatch(self): 
-		
+	def getNextMatch(self):
+		"""
+		Fetches the next match to be played in the tournament.
+
+		:param self: A reference to the Tournament object itself
+		:return: returns the players to play in the next match and the number of times those players have met in a row, including the next match
+		"""
 		mem = self.currentGame
-		
+
 		if self.matches[mem]:
 			self.currentGame = self.currentGame + 1
 			return 2,self.matches[mem]
 		else:
-			return 1,self.players 
+			return 1,self.players
 
 
 	def getCurrentMatch(self):
+		"""
+		Fetches the current match.
+
+		:param self: A reference to the Tournament object itself
+		:return: returns the players to play in the current match and the number of times those players have met in a row, including the current match
+		"""
 		mem = self.currentGame-1
 		if self.matches[mem]:
 			return 2,self.matches[mem]
@@ -103,6 +115,12 @@ class Tournament:
 
 
 	def drawBracket(self):
+		"""
+		Draws the bracket of the tournament.
+
+		:param self: A reference to the Tournament object itself
+		:return: retuerns nothing
+		"""
 		if len(self.players) >= 2:
 			self.makeMatches()
 
@@ -140,12 +158,22 @@ class Tournament:
 					y = y + yoffset*4
 				elif cols == 1:
 					y = y + yoffset*2
-				else:	
+				else:
 					y = y + yoffset*2
-				
+
 
 
 	def drawMatch(self, match, x, y, is_next = False):
+		"""
+		Draws a match in the tournament bracket.
+
+		:param self: A reference to the Tournament object itself
+		:param match: A reference to the match to be drawn
+		:param x: Horizontal coordinate for where to begin to draw the next match
+		:param y: Vertical coordinate for where to begin to draw the next match
+		:param is_next: A boolean deciding whether the given match is the next to be played
+		:return: retuerns nothing
+		"""
 		width = 200
 		height = 40
 
@@ -206,7 +234,7 @@ class Tournament:
 		Appends the current winners to a list belonging to the Tournament object which contains the players advancing to the next round.
 
 		:param self: A reference to the Tournament object itself
-		:param playername: Name of the winning player
+		:param player: A reference to the player to be appended to the list of winners
 		:return: returns nothing
 		"""
 
@@ -219,6 +247,6 @@ class Tournament:
 		print("We have a winner...")
 		print(self.players)
 
-		
+
 
 
