@@ -75,9 +75,7 @@ class GameUI:
 			)
 		)
 		self.askfornames  = Playernames(self.mainArea)
-
 		self.renderTop("","", 1)
-
 		self.border   = pygame.draw.line(
 			self.screen,
 			self.color_border,
@@ -276,8 +274,8 @@ class GameUI:
 				450,
 				buttonHalfWidth*2,
 				buttonHeight,
-				"Forfit",
-				self.displayMainMenu
+				"Forfeit",
+				self.playerForfeit
 			))
 		]
 		if tournamentgame:
@@ -392,6 +390,11 @@ class GameUI:
 				self.displayTournamentGame
 			)
 		)
+
+	def playerForfeit(self):
+		if(hasattr(self, 'game')):
+			if(self.game):
+				self.game.playerForfeit()
 
 	def displayTournamentGame(self, replaygame=False): 
 		self.visiblebuttons = []

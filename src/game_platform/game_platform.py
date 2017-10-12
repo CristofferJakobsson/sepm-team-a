@@ -170,3 +170,6 @@ class Game:
                 return
             else:
                 self.player2.move = self.board.findClickedBox(mousepos)
+    
+    def playerForfeit(self):
+        self.handleWin(self.currentplayer*-1)
