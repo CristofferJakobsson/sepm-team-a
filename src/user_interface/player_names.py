@@ -11,6 +11,7 @@ class Playernames:
 		Construct a new Playernames object.
 
 		:param self: A reference to the Playernames object itself
+		:param screen: The screen where to display the player names
 		:return: returns nothing
 		"""
 		self.screen = screen
@@ -19,7 +20,7 @@ class Playernames:
 		Gets the key input from the keyboard.
 
 		:param self: A reference to the Playernames object itself
-		:return: returns nothing
+		:return: returns key input from the keyboard
 		"""
 		while 1:
 			event = pygame.event.poll()
@@ -57,7 +58,8 @@ class Playernames:
 
 		:param self: A reference to the Playernames object itself
 		:param question: The question asked of the player
-		:return: returns nothing
+		:param previousanswers: Previous answers given to the question asked
+		:return: returns the answer given by the player
 		"""
 		"ask(screen, question) -> answer"
 		pygame.font.init()
@@ -76,7 +78,7 @@ class Playernames:
 			elif inkey <= 127:
 				current_string.append(chr(inkey))
 			self.display_box(question + ": " + "".join(current_string))
-		
+
 		if len(current_string) == 0:
 			return question
 		else:
