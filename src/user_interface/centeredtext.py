@@ -1,6 +1,6 @@
 class centeredtext(object):
   """
-  centeredtext encapsulates a centered text within a given object
+  centeredtext extends the object class and centers text within an object
   """
   def __init__(self, text, x,y,w,h, pygame, fontsize, color=(0,0,0)):
     """
