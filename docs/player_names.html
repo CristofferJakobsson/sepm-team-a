@@ -48,13 +48,15 @@
 <dl><dt><a name="Playernames-__init__"><strong>__init__</strong></a>(self, screen)</dt><dd><tt>Construct&nbsp;a&nbsp;new&nbsp;<a href="#Playernames">Playernames</a>&nbsp;<a href="builtins.html#object">object</a>.<br>
 &nbsp;<br>
 :param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Playernames">Playernames</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:param&nbsp;screen:&nbsp;The&nbsp;screen&nbsp;where&nbsp;to&nbsp;display&nbsp;the&nbsp;player&nbsp;names<br>
 :return:&nbsp;returns&nbsp;nothing</tt></dd></dl>
 
-<dl><dt><a name="Playernames-ask"><strong>ask</strong></a>(self, question)</dt><dd><tt>Asks&nbsp;the&nbsp;player&nbsp;a&nbsp;question&nbsp;and&nbsp;expects&nbsp;an&nbsp;input&nbsp;in&nbsp;the&nbsp;form&nbsp;of&nbsp;key-presses&nbsp;on&nbsp;the&nbsp;keyboard<br>
+<dl><dt><a name="Playernames-ask"><strong>ask</strong></a>(self, question, previousanswers=[])</dt><dd><tt>Asks&nbsp;the&nbsp;player&nbsp;a&nbsp;question&nbsp;and&nbsp;expects&nbsp;an&nbsp;input&nbsp;in&nbsp;the&nbsp;form&nbsp;of&nbsp;key-presses&nbsp;on&nbsp;the&nbsp;keyboard<br>
 &nbsp;<br>
 :param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Playernames">Playernames</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
 :param&nbsp;question:&nbsp;The&nbsp;question&nbsp;asked&nbsp;of&nbsp;the&nbsp;player<br>
-:return:&nbsp;returns&nbsp;nothing</tt></dd></dl>
+:param&nbsp;previousanswers:&nbsp;Previous&nbsp;answers&nbsp;given&nbsp;to&nbsp;the&nbsp;question&nbsp;asked<br>
+:return:&nbsp;returns&nbsp;the&nbsp;answer&nbsp;given&nbsp;by&nbsp;the&nbsp;player</tt></dd></dl>
 
 <dl><dt><a name="Playernames-display_box"><strong>display_box</strong></a>(self, message)</dt><dd><tt>Displays&nbsp;a&nbsp;box&nbsp;on&nbsp;the&nbsp;screen&nbsp;with&nbsp;a&nbsp;given&nbsp;message.<br>
 &nbsp;<br>
@@ -65,7 +67,7 @@
 <dl><dt><a name="Playernames-get_key"><strong>get_key</strong></a>(self)</dt><dd><tt>Gets&nbsp;the&nbsp;key&nbsp;input&nbsp;from&nbsp;the&nbsp;keyboard.<br>
 &nbsp;<br>
 :param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Playernames">Playernames</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
-:return:&nbsp;returns&nbsp;nothing</tt></dd></dl>
+:return:&nbsp;returns&nbsp;key&nbsp;input&nbsp;from&nbsp;the&nbsp;keyboard</tt></dd></dl>
 
 <hr>
 Data descriptors defined here:<br>
