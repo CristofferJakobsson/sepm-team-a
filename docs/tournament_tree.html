@@ -18,7 +18,8 @@
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="random.html">random</a><br>
-</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -43,9 +44,10 @@
 <td colspan=2><tt><a href="#Tournament">Tournament</a>&nbsp;encapsulates&nbsp;a&nbsp;number&nbsp;of&nbsp;players&nbsp;and&nbsp;handles&nbsp;the&nbsp;tournament&nbsp;mode&nbsp;of&nbsp;the&nbsp;game.<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
-<dl><dt><a name="Tournament-__init__"><strong>__init__</strong></a>(self, players)</dt><dd><tt>Construct&nbsp;a&nbsp;new&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>.<br>
+<dl><dt><a name="Tournament-__init__"><strong>__init__</strong></a>(self, ui, players)</dt><dd><tt>Construct&nbsp;a&nbsp;new&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>.<br>
 &nbsp;<br>
 :param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:param&nbsp;ui:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;GameUI&nbsp;<a href="builtins.html#object">object</a><br>
 :param&nbsp;players:&nbsp;a&nbsp;list&nbsp;containing&nbsp;names&nbsp;of&nbsp;players&nbsp;in&nbsp;the&nbsp;tournament<br>
 :return:&nbsp;returns&nbsp;nothing</tt></dd></dl>
 
@@ -54,20 +56,44 @@
 :param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
 :return:&nbsp;returns&nbsp;nothing</tt></dd></dl>
 
+<dl><dt><a name="Tournament-drawBracket"><strong>drawBracket</strong></a>(self)</dt><dd><tt>Draws&nbsp;the&nbsp;bracket&nbsp;of&nbsp;the&nbsp;tournament.<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:return:&nbsp;retuerns&nbsp;nothing</tt></dd></dl>
+
+<dl><dt><a name="Tournament-drawMatch"><strong>drawMatch</strong></a>(self, match, x, y, is_next=False)</dt><dd><tt>Draws&nbsp;a&nbsp;match&nbsp;in&nbsp;the&nbsp;tournament&nbsp;bracket.<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:param&nbsp;match:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;match&nbsp;to&nbsp;be&nbsp;drawn<br>
+:param&nbsp;x:&nbsp;Horizontal&nbsp;coordinate&nbsp;for&nbsp;where&nbsp;to&nbsp;begin&nbsp;to&nbsp;draw&nbsp;the&nbsp;next&nbsp;match<br>
+:param&nbsp;y:&nbsp;Vertical&nbsp;coordinate&nbsp;for&nbsp;where&nbsp;to&nbsp;begin&nbsp;to&nbsp;draw&nbsp;the&nbsp;next&nbsp;match<br>
+:param&nbsp;is_next:&nbsp;A&nbsp;boolean&nbsp;deciding&nbsp;whether&nbsp;the&nbsp;given&nbsp;match&nbsp;is&nbsp;the&nbsp;next&nbsp;to&nbsp;be&nbsp;played<br>
+:return:&nbsp;retuerns&nbsp;nothing</tt></dd></dl>
+
+<dl><dt><a name="Tournament-getCurrentMatch"><strong>getCurrentMatch</strong></a>(self)</dt><dd><tt>Fetches&nbsp;the&nbsp;current&nbsp;match.<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:return:&nbsp;returns&nbsp;the&nbsp;players&nbsp;to&nbsp;play&nbsp;in&nbsp;the&nbsp;current&nbsp;match&nbsp;and&nbsp;the&nbsp;number&nbsp;of&nbsp;times&nbsp;those&nbsp;players&nbsp;have&nbsp;met&nbsp;in&nbsp;a&nbsp;row,&nbsp;including&nbsp;the&nbsp;current&nbsp;match</tt></dd></dl>
+
 <dl><dt><a name="Tournament-getMatches"><strong>getMatches</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;number&nbsp;of&nbsp;matches&nbsp;belonging&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>.<br>
 &nbsp;<br>
 :param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
-:return:&nbsp;returns&nbsp;nothing</tt></dd></dl>
+:return:&nbsp;returns&nbsp;the&nbsp;matches&nbsp;belonging&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a></tt></dd></dl>
+
+<dl><dt><a name="Tournament-getNextMatch"><strong>getNextMatch</strong></a>(self)</dt><dd><tt>Fetches&nbsp;the&nbsp;next&nbsp;match&nbsp;to&nbsp;be&nbsp;played&nbsp;in&nbsp;the&nbsp;tournament.<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:return:&nbsp;returns&nbsp;the&nbsp;players&nbsp;to&nbsp;play&nbsp;in&nbsp;the&nbsp;next&nbsp;match&nbsp;and&nbsp;the&nbsp;number&nbsp;of&nbsp;times&nbsp;those&nbsp;players&nbsp;have&nbsp;met&nbsp;in&nbsp;a&nbsp;row,&nbsp;including&nbsp;the&nbsp;next&nbsp;match</tt></dd></dl>
 
 <dl><dt><a name="Tournament-makeMatches"><strong>makeMatches</strong></a>(self)</dt><dd><tt>Appends&nbsp;a&nbsp;match&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;for&nbsp;each&nbsp;player&nbsp;belonging&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>.<br>
 &nbsp;<br>
 :param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
 :return:&nbsp;returns&nbsp;nothing</tt></dd></dl>
 
-<dl><dt><a name="Tournament-setWinner"><strong>setWinner</strong></a>(self, playername)</dt><dd><tt>Appends&nbsp;the&nbsp;current&nbsp;winners&nbsp;to&nbsp;a&nbsp;list&nbsp;belonging&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;which&nbsp;contains&nbsp;the&nbsp;players&nbsp;advancing&nbsp;to&nbsp;the&nbsp;next&nbsp;round.<br>
+<dl><dt><a name="Tournament-setWinner"><strong>setWinner</strong></a>(self, player)</dt><dd><tt>Appends&nbsp;the&nbsp;current&nbsp;winners&nbsp;to&nbsp;a&nbsp;list&nbsp;belonging&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;which&nbsp;contains&nbsp;the&nbsp;players&nbsp;advancing&nbsp;to&nbsp;the&nbsp;next&nbsp;round.<br>
 &nbsp;<br>
 :param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
-:param&nbsp;playername:&nbsp;Name&nbsp;of&nbsp;the&nbsp;winning&nbsp;player<br>
+:param&nbsp;player:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;player&nbsp;to&nbsp;be&nbsp;appended&nbsp;to&nbsp;the&nbsp;list&nbsp;of&nbsp;winners<br>
 :return:&nbsp;returns&nbsp;nothing</tt></dd></dl>
 
 <hr>
@@ -78,13 +104,5 @@ Data descriptors defined here:<br>
 <dl><dt><strong>__weakref__</strong></dt>
 <dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
 </dl>
-</td></tr></table></td></tr></table><p>
-<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
-<tr bgcolor="#eeaa77">
-<td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
-    
-<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><dl><dt><a name="-main"><strong>main</strong></a>()</dt></dl>
-</td></tr></table>
+</td></tr></table></td></tr></table>
 </body></html>

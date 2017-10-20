@@ -1,6 +1,13 @@
 import math
 
 def adjustMousePos(mousepos, offset):
+    """
+    Adjusts the given mouse position coordinates according to the given offset.
+
+    :param mousepos: The coordinates of the given mouse position
+    :param offset: Offsets to apply to the mouse position coordinates
+    :return: returns the given mouse position adjusted by the given offset
+    """
     return ((mousepos[0]-offset[0]), mousepos[1]-offset[1])
 
 class Board:
@@ -36,15 +43,16 @@ class Board:
         self.drawBoard()
 
     def drawCross(self, box, iconWidth=-1):
-        if iconWidth == -1:
-            iconWidth = self.iconthickness
         """
 		Draws a cross on the screen within a given box of the Tic Tac Toe game.
 
 		:param self: A reference to the Board object itself
 		:param box: An object containing the coordinates of the box which is to contain the cross that is to be drawn.
+		:param iconWidth: The width to use for the drawn cross.
 		:return: returns nothing
 		"""
+        if iconWidth == -1:
+            iconWidth = self.iconthickness
         start1 = ((box.left + self.iconoffset), (box.top + self.iconoffset))
         end1 = ((box.right-self.iconoffset), (box.bottom-self.iconoffset))
 
@@ -60,13 +68,14 @@ class Board:
 
 		:param self: A reference to the Board object itself
 		:param box: An object containing the coordinates of the box which is to contain the circle that is to be drawn.
+        :param iconWidth: The width to use for the drawn circle.
 		:return: returns nothing
 		"""
         #circle(Surface, color, pos, radius, width=0) -> Rect
         if iconWidth == -1:
             iconWidth = self.iconthickness
         self.pygame.draw.circle(self.gameArea,
-                                self.color_circle, 
+                                self.color_circle,
                                 box.center,
                                 math.floor((box.height - self.iconoffset)/2),
                                 iconWidth)
@@ -158,6 +167,13 @@ class Board:
         return -1
 
     def drawWinBoard(self, player):
+        """
+		Draws the win board on the screen.
+
+		:param self: A reference to the Board object itself
+		:param player: A reference to the winning player
+		:return: returns nothing
+		"""
         self.gameArea.fill(self.ui.color_background)
         iconRect = self.pygame.Rect(35, 0, self.gameArea.get_width()-35, self.gameArea.get_height()-70)
         if(player == 1):
@@ -173,6 +189,12 @@ class Board:
         self.pygame.display.flip()
 
     def drawDrawBoard(self):
+        """
+		Draws the draw board on the screen.
+
+		:param self: A reference to the Board object itself
+		:return: returns nothing
+		"""
         self.gameArea.fill(self.ui.color_background)
 
         coords1 = 110, 170
@@ -191,6 +213,13 @@ class Board:
         self.gameArea.blit(row4, coords4)
 
     def displayTournamentDrawInfo(self, countdown):
+        """
+		Displays information about a draw game in the tournament.
+
+		:param self: A reference to the Board object itself
+		:param countdown: number of games that were decided by draw
+		:return: returns nothing
+		"""
         self.gameArea.fill(self.ui.color_background)
 
         coords1 = 110, 170
@@ -215,10 +244,16 @@ class Board:
         self.gameArea.blit(row2, coords2)
         self.gameArea.blit(row3, coords3)
         self.gameArea.blit(row4, coords4)
-        
+
         self.ui.pygame.display.flip()
 
     def displayRandomizingWinner(self):
+        """
+		Displays text for randomizing winner.
+
+		:param self: A reference to the Board object itself
+		:return: returns nothing
+		"""
         self.gameArea.fill(self.ui.color_background)
 
         coords1 = 110, 170
@@ -229,16 +264,16 @@ class Board:
 
         row1_string = "Randomizing"
         row2_string = "winner..."
-        
+
 
         row1 = font.render(row1_string, True, color)
         row2 = font.render(row2_string, True, color)
-    
+
         self.gameArea.blit(row1, coords1)
         self.gameArea.blit(row2, coords2)
-        
+
         self.ui.pygame.display.flip()
-        
+
 
     class Box:
         """

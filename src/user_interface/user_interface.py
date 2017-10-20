@@ -177,7 +177,7 @@ class GameUI:
 		if(hasattr(self, 'game')):
 			if(self.game):
 				self.game.gameTic()
-		
+
 		pygame.display.flip()
 
 	def displayMainMenu(self):
@@ -246,6 +246,7 @@ class GameUI:
 		:param self: A reference to the GameUI object itself
 		:param player1: Name of player 1
 		:param player2: Name of player 2
+		:param tournamentgame: A boolean determining whether the current game is a tournament game
 		:return: returns nothing
 		"""
 		self.mainArea.fill(self.color_background)
@@ -281,7 +282,7 @@ class GameUI:
 		if tournamentgame:
 			print("This is a tournamentgame")
 			self.game = Game(self, player1, player2, True, tournamentgame)
-		else: 
+		else:
 			self.game = Game(self, player1, player2)
 
 	def displaySingelPlayer(self):
@@ -349,14 +350,20 @@ class GameUI:
 
 		for n in range(numplayers):
 			self.playernames.append(self.askfornames.ask("Player " + str(n+1), self.playernames))
-		
+
 		self.tournament = Tournament(self, self.playernames)
 
 		self.displayCurrentTournament()
 
-		
+
 
 	def displayCurrentTournament(self):
+		"""
+		Displays the tournament current active tournament.
+
+		:param self: A reference to the GameUI object itself
+		:return: returns nothing
+		"""
 		self.renderTop("","", 1)
 		buttonHalfWidth = 150
 		buttonHeight = 50
@@ -364,7 +371,7 @@ class GameUI:
 		self.visiblebuttons = []
 		self.tournament.drawBracket()
 		if (self.tournament.currentGame == len(self.tournament.matches)):
-			self.tournament.drawTournamentWinScreen()
+			self.tournament.drawTournamentWinScreen(self.tournament.getNextMatch())
 
 		self.visiblebuttons.append(
 			Button(pygame, self.mainArea).create(
@@ -398,14 +405,14 @@ class GameUI:
 			if(self.game):
 				self.game.playerForfeit()
 
-	def displayTournamentGame(self, replaygame=False): 
+	def displayTournamentGame(self, replaygame=False):
 		self.visiblebuttons = []
 		self.mainArea.fill(self.color_background)
-		if replaygame: 
-			tournamentGame = self.tournament.getCurrentMatch()[1]
-		else: 
-			tournamentGame = self.tournament.getNextMatch()[1]
-		
+		if replaygame:
+			crap, tournamentGame = self.tournament.getCurrentMatch()
+		else:
+			crap, tournamentGame = self.tournament.getNextMatch()
+		print(tournamentGame)
 		self.displayGame(tournamentGame.player1, tournamentGame.player2, tournamentGame)
 
 	def removeButton(self, buttontext):
