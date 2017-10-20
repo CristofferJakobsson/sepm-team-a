@@ -219,6 +219,25 @@ class Tournament:
 		print("We have a winner...")
 		print(self.players)
 
+	def drawTournamentWinScreen(self): 
+		print("Should now draw the winner of the tournament")
+		self.ui.removeButton("Play")
+		self.ui.mainArea.fill(self.ui.color_background)
+		coords1 = 110, 170
+		coords2 = 110, 220
+		coords3 = 110, 270
+		coords4 = 110, 320
+		color = (0,0,0)
+		font = self.ui.pygame.font.SysFont("sans", 52)
+		row1 = font.render("It's", True, color)
+		row2 = font.render("A", True, color)
+		row3 = font.render("Goddamn", True, color)
+		row4 = font.render("Draw!!", True, color)
+		self.ui.mainArea.blit(row1, coords1)
+		self.ui.mainArea.blit(row2, coords2)
+		self.ui.mainArea.blit(row3, coords3)
+		self.ui.mainArea.blit(row4, coords4)
+		
 		
 
 
