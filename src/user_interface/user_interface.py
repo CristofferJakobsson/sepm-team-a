@@ -191,6 +191,8 @@ class GameUI:
 		buttonHalfWidth = 200
 		buttonHeight = 50
 
+		self.game = None
+
 		self.renderTop("","",1)
 		self.visiblebuttons = [
 			(Button(pygame, self.mainArea).create(
