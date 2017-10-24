@@ -75,7 +75,7 @@ class Tournament:
 		:return: returns the players to play in the next match and the number of times those players have met in a row, including the next match
 		"""
 		mem = self.currentGame
-		if mem < len(self.matches) -1:
+		if mem < len(self.matches):
 			self.currentGame = self.currentGame + 1
 			return 2,self.matches[mem]
 		else:
@@ -87,7 +87,7 @@ class Tournament:
 		:return: returns the players to play in the current match and the number of times those players have met in a row, including the current match
 		"""
 		mem = self.currentGame-1
-		if mem < len(self.matches) -1:
+		if mem < len(self.matches):
 			return 2,self.matches[mem]
 		else:
 			return 1, self.players
