@@ -1,5 +1,5 @@
 from board import Board
-import random, math, time
+import random, math, time, threading
 from player import Player, Human, Computer
 class Game:
     """
@@ -52,19 +52,16 @@ class Game:
 		:param winningplayer: A reference to the winning player
 		:return: returns nothing
 		"""
-        print("Someone won")
-        #gamearea = self.board.gameArea
-        #gamearea.fill(self.ui.pygame.Color(0, 0, 0), gamearea.left, gamearea.top, gamearea.right, gamearea.bottom)
         self.board.drawWinBoard(winningplayer)
         self.board = None
         self.ui.game = None
         if self.istournament:
-            time.sleep(3)
             if winningplayer == 1:
                 self.ui.tournament.setWinner(1)
             if winningplayer == -1:
                 self.ui.tournament.setWinner(2)
-            self.ui.displayCurrentTournament()
+
+            threading.Timer(3, self.ui.displayCurrentTournament).start()
 
 
     def handleDraw(self):

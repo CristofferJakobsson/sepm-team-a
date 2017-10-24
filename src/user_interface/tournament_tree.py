@@ -239,7 +239,3 @@ class Tournament:
 		self.ui.mainArea.blit(row2, coords2)
 		self.ui.mainArea.blit(row3, coords3)
 		self.ui.mainArea.blit(row4, coords4)
-		
-		
-
-

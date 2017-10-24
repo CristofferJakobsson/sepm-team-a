@@ -187,6 +187,7 @@ class Board:
         txt = font.render("WINNER", True, color)
         self.gameArea.blit(txt, coords)
         self.pygame.display.flip()
+        print("I am drawing win board")
 
     def drawDrawBoard(self):
         """
