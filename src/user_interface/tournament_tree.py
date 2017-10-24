@@ -24,7 +24,7 @@ class Tournament:
 		self.players = []
 		self.ontothenext = []
 		self.matches = []
-		if len(players) >= 4:
+		if len(players) > 4:
 			self.maxrows = 4
 		else:
 			self.maxrows = 2
