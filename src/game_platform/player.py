@@ -2,6 +2,10 @@ import abc
 import random
 import math
 import time
+import sys
+
+sys.path.insert(0, '../game_engine')
+from game_engine import game_engine
 
 class Player(metaclass=abc.ABCMeta):
 	"""
@@ -18,7 +22,7 @@ class Player(metaclass=abc.ABCMeta):
 		pass
 
 	@abc.abstractmethod
-	def play(self, state):
+	def play(self, state,currentplayer):
 		"""
 		Abstract method that defines a "play" function for Player objects, to be defined in subclasses.
 
@@ -53,7 +57,7 @@ class Human(Player):
 		"""
 		return self.human
 
-	def play(self, state):
+	def play(self, state,currentplayer):
 		"""
 		Performs a given play
 
@@ -82,6 +86,7 @@ class Computer(Player):
 		self.level = level
 		self.human = False
 		self.timer = None
+		self.ai = game_engine(level)
 
 	def isHuman(self):
 		"""
@@ -92,7 +97,7 @@ class Computer(Player):
 		"""
 		return self.human
 
-	def play(self, state):
+	def play(self, state, currentplayer):
 		"""
 		Performs a given play
 
@@ -109,4 +114,4 @@ class Computer(Player):
 			else:
 				self.timer = None
 
-		return math.floor(random.random()*9)
+		return self.ai.makemove(state, currentplayer)

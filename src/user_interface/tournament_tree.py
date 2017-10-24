@@ -222,21 +222,20 @@ class Tournament:
 		print("Should now draw the winner of the tournament")
 		self.ui.removeButton("Play")
 		self.ui.mainArea.fill(self.ui.color_background)
-		coords1 = 110, 170
-		coords2 = 110, 220
-		coords3 = 110, 270
-		coords4 = 110, 320
-		color = (0,0,0)
-		font = self.ui.pygame.font.SysFont("sans", 52)
-		row1 = font.render("Winner:", True, color)
-		row2 = font.render("Mother", True, color)
-		row3 = font.render("fucking", True, color)
-		row4 = font.render(winningplayer[0].name, True, color)
+		coords1 = 400, 170
+		coords2 = 400, 220
+		coords3 = 400, 270
+		coords4 = 400, 320
+		font1 = self.ui.pygame.font.SysFont("sans", 52)
+		font2 = self.ui.pygame.font.SysFont("sans", 40)
+		font3 = self.ui.pygame.font.SysFont("sans", 40)
+		
+		row1 = font1.render("And", True, self.ui.color_darktext)
+		row2 = font2.render("the", True, self.ui.color_darktext)
+		row3 = font3.render("winner is", True, self.ui.color_darktext)
+		row4 = font1.render(winningplayer[0].name, True, self.ui.color_darktext)
+
 		self.ui.mainArea.blit(row1, coords1)
 		self.ui.mainArea.blit(row2, coords2)
 		self.ui.mainArea.blit(row3, coords3)
 		self.ui.mainArea.blit(row4, coords4)
-		
-		
-
-

@@ -305,7 +305,7 @@ class GameUI:
 		computerdifficulty = -1
 		while(computerdifficulty not in [1, 2, 3]):
 			try:
-				computerdifficulty = int(self.askfornames.ask("CPU Dificculty"))
+				computerdifficulty = int(self.askfornames.ask("AI Dificculty"))
 			except ValueError:
 				pass
 		player1 = Human(self.playernames[0])
