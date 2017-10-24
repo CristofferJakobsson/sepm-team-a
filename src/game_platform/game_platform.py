@@ -147,9 +147,9 @@ class Game:
         boxId = -1
 
         if self.currentplayer == 1:
-            boxId = self.player1.play(self.gameState)
+            boxId = self.player1.play(self.gameState, self.currentplayer)
         if self.currentplayer == -1:
-            boxId = self.player2.play(self.gameState)
+            boxId = self.player2.play(self.gameState, self.currentplayer)
 
         if self.validmove(boxId):
             self.makemove(boxId)
