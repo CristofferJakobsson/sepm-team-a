@@ -191,3 +191,4 @@ class Game:
 		:return: returns nothing
 		"""
         self.handleWin(self.currentplayer*-1)
+        

@@ -305,11 +305,17 @@ class GameUI:
 		computerdifficulty = -1
 		while(computerdifficulty not in [1, 2, 3]):
 			try:
-				computerdifficulty = int(self.askfornames.ask("AI Dificculty"))
+				computerdifficulty = int(self.askfornames.ask("AI Dificculty (1-3)"))
 			except ValueError:
 				pass
 		player1 = Human(self.playernames[0])
-		player2 = Computer(self.playernames[1], 2)
+		if computerdifficulty == 3:
+			lvl = "hard"
+		elif computerdifficulty == 2:
+			lvl = "normal"
+		else:
+			lvl = "easy"
+		player2 = Computer(self.playernames[1], lvl)
 		self.displayGame(player1, player2)
 
 	def displayTwoPlayer(self):
