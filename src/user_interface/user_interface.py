@@ -253,8 +253,6 @@ class GameUI:
 		buttonHalfWidth = 150
 		buttonHeight = 50
 
-		self.renderTop(player1, player2, 1)
-
 		self.visiblebuttons = [
 			(Button(pygame, self.mainArea).create(
 				self.color_menu,
@@ -284,6 +282,8 @@ class GameUI:
 			self.game = Game(self, player1, player2, True, tournamentgame)
 		else:
 			self.game = Game(self, player1, player2)
+
+		self.renderTop(player1, player2, self.game.currentplayer)
 
 	def displaySingelPlayer(self):
 		"""

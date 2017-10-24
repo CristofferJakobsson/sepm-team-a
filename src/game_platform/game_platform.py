@@ -42,7 +42,7 @@ class Game:
 		:return: returns nothing
 		"""
         #self.ui.mainArea.fill(self.ui.color_background)
-        self.board = Board(ui)
+        self.board = Board(ui, self.player1, self.player2)
 
     def handleWin(self, winningplayer):
         """

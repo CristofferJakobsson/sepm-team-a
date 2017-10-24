@@ -14,7 +14,7 @@ class Board:
     """
 	Board is the graphical interface for the Game Platform which displays the Tic Tac Toe game and draws different moves on the screen
 	"""
-    def __init__(self, ui):
+    def __init__(self, ui, player1, player2):
         """
 		Construct a new Board object.
 
@@ -22,8 +22,8 @@ class Board:
 		:param ui: A reference to the GameUI object
 		:return: returns nothing
 		"""
-        self.player1 = ui.playernames[0]
-        self.player2 = ui.playernames[1]
+        self.player1 = player1
+        self.player2 = player2
         self.ui = ui
         self.pygame = ui.pygame
         self.gameArea = ui.mainArea.subsurface(
