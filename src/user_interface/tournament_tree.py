@@ -217,11 +217,27 @@ class Tournament:
 		print("We have a winner...")
 		print(self.players)
 
-	def drawTournamentWinScreen(self, winTuple): 
+	def drawTournamentWinScreen(self, winTuple):
 		crapp, winningplayer = winTuple
 		print("Should now draw the winner of the tournament")
-		self.ui.removeButton("Play")
+		self.ui.visiblebuttons = []
+		buttonHalfWidth = 150
+		buttonHeight = 50
 		self.ui.mainArea.fill(self.ui.color_background)
+		self.ui.visiblebuttons.append(
+			Button(self.ui.pygame, self.ui.mainArea).create(
+				self.ui.color_menu,
+				self.ui.color_darktext,
+				self.ui.color_border,
+				100,
+				450,
+				buttonHalfWidth*2,
+				buttonHeight,
+				"Back",
+				self.ui.displayMainMenu
+			)
+		)
+		
 		coords1 = 400, 170
 		coords2 = 400, 220
 		coords3 = 400, 270

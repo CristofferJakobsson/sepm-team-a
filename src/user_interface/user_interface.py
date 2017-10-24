@@ -254,6 +254,9 @@ class GameUI:
 		self.mainArea.fill(self.color_background)
 		buttonHalfWidth = 150
 		buttonHeight = 50
+		backtext = "Back"
+		if tournamentgame:
+			backtext = "Quit Tournament"
 
 		self.visiblebuttons = [
 			(Button(pygame, self.mainArea).create(
@@ -264,7 +267,7 @@ class GameUI:
 				450,
 				buttonHalfWidth*2,
 				buttonHeight,
-				"Back",
+				backtext,
 				self.displayMainMenu
 			)),
 			(Button(pygame, self.mainArea).create(
@@ -380,6 +383,7 @@ class GameUI:
 		self.tournament.drawBracket()
 		if (self.tournament.currentGame == len(self.tournament.matches)):
 			self.tournament.drawTournamentWinScreen(self.tournament.getNextMatch())
+			return
 
 		self.visiblebuttons.append(
 			Button(pygame, self.mainArea).create(
@@ -390,7 +394,7 @@ class GameUI:
 				450,
 				buttonHalfWidth*2,
 				buttonHeight,
-				"Back",
+				"Quit Tournament",
 				self.displayMainMenu
 			)
 		)
@@ -429,6 +433,25 @@ class GameUI:
 			print("Currently looking at button " + self.visiblebuttons[i].text)
 			if (self.visiblebuttons[i].text==buttontext):
 				break
+
+	def putOnlyBackButton(self):
+		self.visiblebuttons = []
+		buttonHalfWidth = 150
+		buttonHeight = 50
+		self.mainArea.fill(self.color_background)
+		self.visiblebuttons.append(
+			Button(self.pygame, self.mainArea).create(
+				self.color_menu,
+				self.color_darktext,
+				self.color_border,
+				100,
+				450,
+				buttonHalfWidth*2,
+				buttonHeight,
+				"Back",
+				self.displayMainMenu
+			)
+		)
 
 ui = GameUI()
 while 1:

@@ -166,7 +166,7 @@ class Board:
                 return box.id
         return -1
 
-    def drawWinBoard(self, player):
+    def drawWinBoard(self, player, istournament=False):
         """
 		Draws the win board on the screen.
 
@@ -174,7 +174,13 @@ class Board:
 		:param player: A reference to the winning player
 		:return: returns nothing
 		"""
-        self.gameArea.fill(self.ui.color_background)
+
+        if istournament:
+            self.ui.visiblebuttons = []
+            self.ui.mainArea.fill(self.ui.color_background)
+        else:
+            self.ui.putOnlyBackButton()
+        
         iconRect = self.pygame.Rect(35, 0, self.gameArea.get_width()-35, self.gameArea.get_height()-70)
         if(player == 1):
             self.drawCross(iconRect, 35)
@@ -196,8 +202,8 @@ class Board:
 		:param self: A reference to the Board object itself
 		:return: returns nothing
 		"""
-        self.gameArea.fill(self.ui.color_background)
-
+        #self.gameArea.fill(self.ui.color_background)
+        self.ui.putOnlyBackButton()
         coords1 = 110, 170
         coords2 = 110, 220
         coords3 = 110, 270

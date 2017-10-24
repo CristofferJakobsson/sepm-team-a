@@ -52,7 +52,7 @@ class Game:
 		:param winningplayer: A reference to the winning player
 		:return: returns nothing
 		"""
-        self.board.drawWinBoard(winningplayer)
+        self.board.drawWinBoard(winningplayer, self.istournament)
         self.board = None
         self.ui.game = None
         if self.istournament:
@@ -60,7 +60,7 @@ class Game:
                 self.ui.tournament.setWinner(1)
             if winningplayer == -1:
                 self.ui.tournament.setWinner(2)
-
+            
             threading.Timer(3, self.ui.displayCurrentTournament).start()
 
 
