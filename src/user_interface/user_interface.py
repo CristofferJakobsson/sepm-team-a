@@ -370,6 +370,8 @@ class GameUI:
 		self.mainArea.fill(self.color_background)
 		self.visiblebuttons = []
 		self.tournament.drawBracket()
+		if (self.tournament.currentGame == len(self.tournament.matches)):
+			self.tournament.drawTournamentWinScreen(self.tournament.getNextMatch())
 
 		self.visiblebuttons.append(
 			Button(pygame, self.mainArea).create(
@@ -407,11 +409,18 @@ class GameUI:
 		self.visiblebuttons = []
 		self.mainArea.fill(self.color_background)
 		if replaygame:
-			tournamentGame = self.tournament.getCurrentMatch()[1]
+			crap, tournamentGame = self.tournament.getCurrentMatch()
 		else:
-			tournamentGame = self.tournament.getNextMatch()[1]
-
+			crap, tournamentGame = self.tournament.getNextMatch()
+		print(tournamentGame)
 		self.displayGame(tournamentGame.player1, tournamentGame.player2, tournamentGame)
+
+	def removeButton(self, buttontext):
+		print("Should remove " + buttontext + " button")
+		for i in range(0,len(self.visiblebuttons)):
+			print("Currently looking at button " + self.visiblebuttons[i].text)
+			if (self.visiblebuttons[i].text==buttontext):
+				break
 
 ui = GameUI()
 while 1:

@@ -14,7 +14,6 @@ class Tournament:
 	def __init__(self, ui, players):
 		"""
 		Construct a new Tournament object.
-
 		:param self: A reference to the Tournament object itself
 		:param ui: A reference to the GameUI object
 		:param players: a list containing names of players in the tournament
@@ -25,32 +24,24 @@ class Tournament:
 		self.players = []
 		self.ontothenext = []
 		self.matches = []
-
 		if len(players) >= 4:
 			self.maxrows = 4
 		else:
 			self.maxrows = 2
-
 		# Check names are not blank
 		for n in range(len(players)):
 			if len(players[n]) > 0:
 				self.players.append(Human(players[n]))
-
-
-
 		c = 1
 		while 1:
 			if len(self.players) % 4 == 0:
 				break
-
 			level = 0
-
 			while(level not in [1,2,3]):
 				try:
 					level = int(self.ui.askfornames.ask("AI level: (1, 2, 3)"))
 				except ValueError:
 					pass
-
 			if level == 1:
 				l = "easy"
 			elif level == 2:
@@ -59,51 +50,39 @@ class Tournament:
 				l = "hard"
 			self.players.append(Computer("Computer " + str(c), l))
 			c = c + 1
-
 		random.shuffle(self.players)
-
 		self.makeMatches()
-
 	def debug(self):
 		"""
 		Prints out variables belonging to the Tournament object.
-
 		:param self: A reference to the Tournament object itself
 		:return: returns nothing
 		"""
 		print(self.players)
 		print(self.matches)
 		print(self.ontothenext)
-
 	def getMatches(self):
 		"""
 		Returns the number of matches belonging to the Tournament object.
-
 		:param self: A reference to the Tournament object itself
 		:return: returns the matches belonging to the Tournament object
 		"""
 		return self.matches
-
 	def getNextMatch(self):
 		"""
 		Fetches the next match to be played in the tournament.
-
 		:param self: A reference to the Tournament object itself
 		:return: returns the players to play in the next match and the number of times those players have met in a row, including the next match
 		"""
 		mem = self.currentGame
-
 		if mem < len(self.matches) -1:
 			self.currentGame = self.currentGame + 1
 			return 2,self.matches[mem]
 		else:
 			return 1,self.players
-
-
 	def getCurrentMatch(self):
 		"""
 		Fetches the current match.
-
 		:param self: A reference to the Tournament object itself
 		:return: returns the players to play in the current match and the number of times those players have met in a row, including the current match
 		"""
@@ -112,24 +91,18 @@ class Tournament:
 			return 2,self.matches[mem]
 		else:
 			return 1, self.players
-
-
 	def drawBracket(self):
 		"""
 		Draws the bracket of the tournament.
-
 		:param self: A reference to the Tournament object itself
 		:return: retuerns nothing
 		"""
 		if len(self.players) >= 2:
 			self.makeMatches()
-
 		xoffset = 240
 		yoffset = 50
-
 		xstart = 300
 		ystart = 10
-
 		x = xstart
 		y = ystart
 		rows = 0
@@ -160,9 +133,6 @@ class Tournament:
 					y = y + yoffset*2
 				else:
 					y = y + yoffset*2
-
-
-
 	def drawMatch(self, match, x, y, is_next = False):
 		"""
 		Draws a match in the tournament bracket.
@@ -247,6 +217,26 @@ class Tournament:
 		print("We have a winner...")
 		print(self.players)
 
-
+	def drawTournamentWinScreen(self, winTuple): 
+		crapp, winningplayer = winTuple
+		print("Should now draw the winner of the tournament")
+		self.ui.removeButton("Play")
+		self.ui.mainArea.fill(self.ui.color_background)
+		coords1 = 110, 170
+		coords2 = 110, 220
+		coords3 = 110, 270
+		coords4 = 110, 320
+		color = (0,0,0)
+		font = self.ui.pygame.font.SysFont("sans", 52)
+		row1 = font.render("Winner:", True, color)
+		row2 = font.render("Mother", True, color)
+		row3 = font.render("fucking", True, color)
+		row4 = font.render(winningplayer[0].name, True, color)
+		self.ui.mainArea.blit(row1, coords1)
+		self.ui.mainArea.blit(row2, coords2)
+		self.ui.mainArea.blit(row3, coords3)
+		self.ui.mainArea.blit(row4, coords4)
+		
+		
 
 
