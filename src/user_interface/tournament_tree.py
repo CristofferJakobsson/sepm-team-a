@@ -142,7 +142,7 @@ class Tournament:
 		:param x: Horizontal coordinate for where to begin to draw the next match
 		:param y: Vertical coordinate for where to begin to draw the next match
 		:param is_next: A boolean deciding whether the given match is the next to be played
-		:return: retuerns nothing
+		:return: returns nothing
 		"""
 		width = 200
 		height = 40
@@ -218,6 +218,13 @@ class Tournament:
 		print(self.players)
 
 	def drawTournamentWinScreen(self, winTuple):
+		"""
+		Draws the tournament win screen
+
+		:param self: A reference to the Tournament object itself
+		:param winTuple: A touple containing the winning player and the rest
+		:return: returns nothing
+		"""
 		crapp, winningplayer = winTuple
 		print("Should now draw the winner of the tournament")
 		self.ui.visiblebuttons = []
