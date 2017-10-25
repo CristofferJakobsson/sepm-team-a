@@ -413,11 +413,24 @@ class GameUI:
 		)
 
 	def playerForfeit(self):
+		"""
+		Forfeits the game for the current player.
+
+		:param self: A reference to the GameUI object itself
+		:return: returns nothing
+		"""
 		if(hasattr(self, 'game')):
 			if(self.game):
 				self.game.playerForfeit()
 
 	def displayTournamentGame(self, replaygame=False):
+		"""
+		Displays the current Tournament game.
+
+		:param self: A reference to the GameUI object itself
+		:param replaygame: A boolean deciding whether the current game should be replayed
+		:return: returns nothing
+		"""
 		self.visiblebuttons = []
 		self.mainArea.fill(self.color_background)
 		if replaygame:
@@ -428,6 +441,13 @@ class GameUI:
 		self.displayGame(tournamentGame.player1, tournamentGame.player2, tournamentGame)
 
 	def removeButton(self, buttontext):
+		"""
+		Removes a button with the given buttontext
+
+		:param buttontext: Text that is used to find the button to remove
+		:param self: A reference to the GameUI object itself
+		:return: returns nothing
+		"""
 		print("Should remove " + buttontext + " button")
 		for i in range(0,len(self.visiblebuttons)):
 			print("Currently looking at button " + self.visiblebuttons[i].text)
@@ -435,6 +455,12 @@ class GameUI:
 				break
 
 	def putOnlyBackButton(self):
+		"""
+		Displays the back button
+
+		:param self: A reference to the GameUI object itself
+		:return: returns nothing
+		"""
 		self.visiblebuttons = []
 		buttonHalfWidth = 150
 		buttonHeight = 50
