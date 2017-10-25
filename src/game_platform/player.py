@@ -27,6 +27,7 @@ class Player(metaclass=abc.ABCMeta):
 		Abstract method that defines a "play" function for Player objects, to be defined in subclasses.
 
 		:param self: A reference to the Player object itself
+		:param currentplayer: A reference to whom the currentplayer is
 		:param state: A variable containing whatever state to use in subclass-defined versions of this method
 		"""
 		pass
@@ -63,6 +64,7 @@ class Human(Player):
 
 		:param self: A reference to the Human object itself
 		:param state: A reference to the current game state
+		:param currentplayer: A reference to whom the currentplayer is
 		:return: returns an integer representing an index in the game board
 		"""
 		tentativeMove = self.move
@@ -103,7 +105,8 @@ class Computer(Player):
 
 		:param self: A reference to the Human object itself
 		:param state: A reference to the current game state
-		:return: returns a random integer representing an index in the game board
+		:param currentplayer: A reference to whom the currentplayer is
+		:return: returns the next AI move to make
 		"""
 		if(self.timer == None):
 			self.timer = time.time()
