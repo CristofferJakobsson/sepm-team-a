@@ -20,6 +20,8 @@ class Board:
 
 		:param self: A reference to the Board object itself
 		:param ui: A reference to the GameUI object
+		:param player1: A reference to the first Player object in the game
+		:param player2: A reference to the second Player object in the game
 		:return: returns nothing
 		"""
         self.player1 = player1
@@ -172,6 +174,7 @@ class Board:
 
 		:param self: A reference to the Board object itself
 		:param player: A reference to the winning player
+		:param istournament: A boolean deciding whether the current board is part of a tournament
 		:return: returns nothing
 		"""
 
@@ -180,7 +183,7 @@ class Board:
             self.ui.mainArea.fill(self.ui.color_background)
         else:
             self.ui.putOnlyBackButton()
-        
+
         iconRect = self.pygame.Rect(35, 0, self.gameArea.get_width()-35, self.gameArea.get_height()-70)
         if(player == 1):
             self.drawCross(iconRect, 35)

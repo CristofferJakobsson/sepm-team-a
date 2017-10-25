@@ -60,7 +60,7 @@ class Game:
                 self.ui.tournament.setWinner(1)
             if winningplayer == -1:
                 self.ui.tournament.setWinner(2)
-            
+
             threading.Timer(3, self.ui.displayCurrentTournament).start()
 
 
@@ -191,4 +191,3 @@ class Game:
 		:return: returns nothing
 		"""
         self.handleWin(self.currentplayer*-1)
-        
