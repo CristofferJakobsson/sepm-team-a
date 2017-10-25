@@ -45,19 +45,16 @@
 <tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
 <dl><dt><a name="Tournament-__init__"><strong>__init__</strong></a>(self, ui, players)</dt><dd><tt>Construct&nbsp;a&nbsp;new&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>.<br>
-&nbsp;<br>
 :param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
 :param&nbsp;ui:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;GameUI&nbsp;<a href="builtins.html#object">object</a><br>
 :param&nbsp;players:&nbsp;a&nbsp;list&nbsp;containing&nbsp;names&nbsp;of&nbsp;players&nbsp;in&nbsp;the&nbsp;tournament<br>
 :return:&nbsp;returns&nbsp;nothing</tt></dd></dl>
 
 <dl><dt><a name="Tournament-debug"><strong>debug</strong></a>(self)</dt><dd><tt>Prints&nbsp;out&nbsp;variables&nbsp;belonging&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>.<br>
-&nbsp;<br>
 :param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
 :return:&nbsp;returns&nbsp;nothing</tt></dd></dl>
 
 <dl><dt><a name="Tournament-drawBracket"><strong>drawBracket</strong></a>(self)</dt><dd><tt>Draws&nbsp;the&nbsp;bracket&nbsp;of&nbsp;the&nbsp;tournament.<br>
-&nbsp;<br>
 :param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
 :return:&nbsp;retuerns&nbsp;nothing</tt></dd></dl>
 
@@ -68,20 +65,23 @@
 :param&nbsp;x:&nbsp;Horizontal&nbsp;coordinate&nbsp;for&nbsp;where&nbsp;to&nbsp;begin&nbsp;to&nbsp;draw&nbsp;the&nbsp;next&nbsp;match<br>
 :param&nbsp;y:&nbsp;Vertical&nbsp;coordinate&nbsp;for&nbsp;where&nbsp;to&nbsp;begin&nbsp;to&nbsp;draw&nbsp;the&nbsp;next&nbsp;match<br>
 :param&nbsp;is_next:&nbsp;A&nbsp;boolean&nbsp;deciding&nbsp;whether&nbsp;the&nbsp;given&nbsp;match&nbsp;is&nbsp;the&nbsp;next&nbsp;to&nbsp;be&nbsp;played<br>
-:return:&nbsp;retuerns&nbsp;nothing</tt></dd></dl>
+:return:&nbsp;returns&nbsp;nothing</tt></dd></dl>
+
+<dl><dt><a name="Tournament-drawTournamentWinScreen"><strong>drawTournamentWinScreen</strong></a>(self, winTuple)</dt><dd><tt>Draws&nbsp;the&nbsp;tournament&nbsp;win&nbsp;screen<br>
+&nbsp;<br>
+:param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
+:param&nbsp;winTuple:&nbsp;A&nbsp;touple&nbsp;containing&nbsp;the&nbsp;winning&nbsp;player&nbsp;and&nbsp;the&nbsp;rest<br>
+:return:&nbsp;returns&nbsp;nothing</tt></dd></dl>
 
 <dl><dt><a name="Tournament-getCurrentMatch"><strong>getCurrentMatch</strong></a>(self)</dt><dd><tt>Fetches&nbsp;the&nbsp;current&nbsp;match.<br>
-&nbsp;<br>
 :param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
 :return:&nbsp;returns&nbsp;the&nbsp;players&nbsp;to&nbsp;play&nbsp;in&nbsp;the&nbsp;current&nbsp;match&nbsp;and&nbsp;the&nbsp;number&nbsp;of&nbsp;times&nbsp;those&nbsp;players&nbsp;have&nbsp;met&nbsp;in&nbsp;a&nbsp;row,&nbsp;including&nbsp;the&nbsp;current&nbsp;match</tt></dd></dl>
 
 <dl><dt><a name="Tournament-getMatches"><strong>getMatches</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;number&nbsp;of&nbsp;matches&nbsp;belonging&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>.<br>
-&nbsp;<br>
 :param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
 :return:&nbsp;returns&nbsp;the&nbsp;matches&nbsp;belonging&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a></tt></dd></dl>
 
 <dl><dt><a name="Tournament-getNextMatch"><strong>getNextMatch</strong></a>(self)</dt><dd><tt>Fetches&nbsp;the&nbsp;next&nbsp;match&nbsp;to&nbsp;be&nbsp;played&nbsp;in&nbsp;the&nbsp;tournament.<br>
-&nbsp;<br>
 :param&nbsp;self:&nbsp;A&nbsp;reference&nbsp;to&nbsp;the&nbsp;<a href="#Tournament">Tournament</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself<br>
 :return:&nbsp;returns&nbsp;the&nbsp;players&nbsp;to&nbsp;play&nbsp;in&nbsp;the&nbsp;next&nbsp;match&nbsp;and&nbsp;the&nbsp;number&nbsp;of&nbsp;times&nbsp;those&nbsp;players&nbsp;have&nbsp;met&nbsp;in&nbsp;a&nbsp;row,&nbsp;including&nbsp;the&nbsp;next&nbsp;match</tt></dd></dl>
 
